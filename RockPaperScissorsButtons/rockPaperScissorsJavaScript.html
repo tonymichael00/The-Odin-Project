@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test2</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <div id=rpsD>
+
+
+
+
+
+
+
+
+
+
+      <button id = rockB onclick="rock(playerChoice)" class="rps" type="button">
+        Rock
+      </button>
+      <button id= paperB onclick="paper(playerChoice)" class="rps" type="button">
+        Paper
+      </button>
+      <button id= scissorsB onclick="scissors(playerChoice)" class="rps" type="button">
+        Scissors
+      </button>
+    </div>
+    <script>
+      let playerChoice;
+      let someArr = [1,2,3];
+      
+
+      let rpsSelector = document.querySelectorAll("#rpsD > button");
+      console.log(rpsSelector);
+
+
+      function rock(playerChoice){
+        return "rock";
+      }
+
+      function paper(playerChoice){
+        return "paper";
+      }
+
+      function scissors(playerChoice){
+        playerChoice = "scissors";
+      }
+
+      console.log(playerChoice);
+
+      // function game(playerChoice, computerScore, playerScore){
+        
+      // }
+
+      function computerPlay() {
+        if (Math.random() < 0.3) {
+          return "rock";
+        } else if (Math.random() < 0.6) {
+          return "paper";
+        } else if (Math.random() < 1) {
+          return "scissors";
+        }
+      }
+
+      // window.addEventListener('keydown', function(e) {
+        
+      // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      // playerSelection = window.prompt("rock, paper or scissors?");
+      /*
+      hi();
+      game();
+
+      function hi() {
+        return console.log("hello");
+      }
+
+      function game() {
+        let playerScore = 0;
+        let computerScore = 0;
+        // return console.log("game");
+
+        for (i = 0; i < 5; i++) {
+          playerSelection = window.prompt("rock, paper or scissors?");
+
+          playRound(playerSelection, computerPlay());
+          console.log(playRound.results);
+          console.log(playRound.playerScore);
+          console.log(playRound.loopNumber);
+
+          function computerPlay() {
+            if (Math.random() < 0.3) {
+              return "rock";
+            } else if (Math.random() < 0.6) {
+              return "paper";
+            } else if (Math.random() < 1) {
+              return "scissors";
+            }
+          }
+
+          function RPS(playerSelection, computerSelection) {
+            playerSelection = playerSelection.toLowerCase();
+            computerSelection = computerSelection.toLowerCase();
+
+            let loopNumber = 0;
+            let results;
+
+            if (playerSelection == "rock" && computerSelection == "scissors") {
+              playerScore = 1;
+
+              return "You win! Rock beats scissors.";
+
+            } else if (playerSelection == "scissors" && computerSelection == "paper") {
+              playerScore = 1;
+
+              return "You win! Scissors beats paper.";
+            } 
+            else if (
+              playerSelection == "paper" &&
+              computerSelection == "rock"
+            ) {
+              return "You win! Paper beats rock.";
+            } 
+            else if (playerSelection == computerSelection) {
+              return "tie!";
+            } 
+            else {
+              return "You lose! " + computerSelection + " beats " + playerSelection + ".";
+            }
+
+            function playRound(playerSelection, computerSelection) {
+              computerPlay();
+
+              return RPS(playerSelection, computerSelection);
+            }
+          }
+        }
+      }
+
+      console.log(playRound(playerSelection, computerSelection));
+      console.log("add7: " + add7(7) + "multiply: " + multiply(8, 8)); */
+    </script>
+  </body>
+</html>
