@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch-A-Sketch</title>
+</head>
+<body>
+    <style>
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            font-family:Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        #sketch {
+            table-layout: auto;
+            width: 100%;
+            height: 500px;  
+            width: 500px;   
+            margin-top: 20px       
+        }
+
+    </style>
+    
+    
+
+
+
+
+
+    
+    
+    <h1>Etch-A-Sketch</h1>
+    <button id="pixelBtn">Pixels</button>
+    <div >
+        <table id="sketch"></table>
+    </div>
+
+
+
+
+
+
+
+
+    <script>
+
+    let pixelNo = 64;
+    sketch = document.getElementById("sketch")
+
+
+    document.getElementById("pixelBtn").addEventListener("click", function( event ) {
+        pixelNo = prompt("Enter number of pixels in rows and columns with a max of 100.", "");
+
+        // sketch.getElementsByTagName("tr").removeChild(tr);
+
+        function removeAllChildNodes(parent) {
+            while (parent.firstChild) {
+                parent.removeChild(parent.firstChild);
+            }
+        }
+
+        removeAllChildNodes(sketch);
+
+        for(i=0; i < pixelNo; i++){
+            var tr = document.createElement('tr');
+
+            sketch.appendChild(tr);
+
+            for(j=0; j < pixelNo; j++){
+                var td = document.createElement('td');
+
+                sketch.getElementsByTagName("tr")[i].appendChild(td);
+                //document.getElementById("sketch").appendChild(td);
+        
+            }
+        }
+
+
+        console.log(pixelNo);
+
+    });
+
+
+    for(i=0; i < pixelNo; i++){
+            var tr = document.createElement('tr');
+
+            sketch.appendChild(tr);
+
+            for(j=0; j < pixelNo; j++){
+                var td = document.createElement('td');
+
+                sketch.getElementsByTagName("tr")[i].appendChild(td);
+                //document.getElementById("sketch").appendChild(td);
+        
+            }
+        }
+
+    // for(i=0; i < pixelNo; i++){
+    //     var div = document.createElement('div');
+    //     div.setAttribute("class", "pixel");
+    //     div.setAttribute("style", "grid-template-columns: repeat(auto-fill, (500/pixelNo)px); grid-template-rows: repeat(auto-fill, (500/pixelNo)px); grid-gap: 0px;");
+
+    //     document.getElementById("sketch").appendChild(div);
+
+    // }
+
+
+
+
+
+
+    console.log(pixelNo);
+    </script>
+</body>
+</html>
