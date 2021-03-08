@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator</title>
+ </head>
+ <body>
+  <style>
+   body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+   }
+
+   h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+   }
+
+   #calc {
+    background-color: rgb(65, 65, 65);
+    width: 500px;
+    /* height: 525px; */
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-auto-rows: calc(465px / 7); */
+    grid-auto-rows: 70px;
+    gap: 5px;
+    padding: 5px;
+   }
+
+   #calc div p {
+    margin: auto;
+   }
+
+   #calcDisplay {
+    grid-column: 1 / 5;
+    grid-row: 1;
+   }
+
+   .calcKeys {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    color: white;
+    text-align: center;
+    /* vertical-align: center; */
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
+   .functionKeys {
+    background-color: rgb(37, 37, 37);
+   }
+
+   #calcDisplay,
+   #equalKey {
+    /* opacity: 0%; */
+    background-color: rgb(65, 65, 65);
+   }
+  </style>
+
+  <h1>Calculator</h1>
+  <div id="calc">
+   <div id="calcDisplay" class="equalDisplay calcKeys"></div>
+   <div class="calcKeys functionKeys">
+    <p>%</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>CE</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>C</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>BACKSPACE</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>1/X</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>X^2</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>X^1/2</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>/</p>
+   </div>
+   <div class="calcKeys">
+    <p>7</p>
+   </div>
+   <div class="calcKeys">
+    <p>8</p>
+   </div>
+   <div class="calcKeys">
+    <p>9</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>*</p>
+   </div>
+   <div class="calcKeys">
+    <p>4</p>
+   </div>
+   <div class="calcKeys">
+    <p>5</p>
+   </div>
+   <div class="calcKeys">
+    <p>6</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>-</p>
+   </div>
+   <div class="calcKeys">
+    <p>1</p>
+   </div>
+   <div class="calcKeys">
+    <p>2</p>
+   </div>
+   <div class="calcKeys">
+    <p>3</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>+</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>+/-</p>
+   </div>
+   <div class="calcKeys">
+    <p>0</p>
+   </div>
+   <div class="calcKeys functionKeys">
+    <p>.</p>
+   </div>
+   <div id="equalKey" class="calcKeys functionKeys equalDisplay">
+    <p>=</p>
+   </div>
+  </div>
+
+  <script src="script.js"></script>
+ </body>
+</html>
