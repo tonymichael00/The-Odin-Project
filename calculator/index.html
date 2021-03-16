@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: gray;
+    background-color: rgb(175, 175, 175);
    }
 
    h1 {
@@ -20,79 +20,80 @@
    }
 
    #calc {
-    background-color: white;
-    margin: 10px;
-   }
-
-   #calcTbl {
-    table-layout: fixed;
+    background-color: rgb(126, 126, 126);
     width: 500px;
-    height: 500px;
-    margin: 0px;
-    /* border: 0px; */
-    padding: 0px;
-    border-spacing: 10px;
-    background-color: white;
+    /* height: 525px; */
+    display: grid;
+    justify-content: space-around;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-auto-rows: calc(465px / 7); */
+    grid-auto-rows: 70px;
+    gap: 5px;
+    padding: 5px;
    }
 
-   #calcTbl tr {
-    margin: 0px;
-    border: 0px;
-    padding: 0px;
-    background-color: white;
+   #calc div {
+    margin: auto;
+    width: 100%;
+    height: 100%;
    }
 
-   #calcTbl tr td {
-    margin: 10px;
-    padding: 10px;
-    border: 10px;
-    border-color: rgb(255, 191, 191);
-    background-color: rgb(170, 24, 24);
+   #calcDisplay {
+    grid-column: 1 / 5;
+    grid-row: 1;
+    font-size: 50pt;
+    margin-left: auto;
    }
 
-   #calcTbl tr {
-    margin: 10px;
-    padding: 10px;
-    border: 10px;
-    border-color: rgb(255, 191, 191);
-    background-color: rgb(170, 24, 24);
+   .calcKeys {
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    color: white;
+    text-align: center;
+    /* vertical-align: center; */
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+   }
+
+   .functionKeys {
+    background-color: rgb(37, 37, 37);
+   }
+
+   #calcDisplay,
+   #equalKey {
+    /* opacity: 0%; */
+    background-color: rgb(65, 65, 65);
    }
   </style>
 
   <h1>Calculator</h1>
   <div id="calc">
-   <table id="calcTbl">
-    <tr>
-     <td></td>
-    </tr>
-    <tr>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-    </tr>
-    <tr>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-    </tr>
-    <tr>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-     <td></td>
-    </tr>
-   </table>
+   <div id="calcDisplay" class="equalDisplay calcKeys">-111111111.111</div>
+   <div class="calcKeys functionKeys">%</div>
+   <div class="calcKeys functionKeys">CE</div>
+   <div class="calcKeys functionKeys">C</div>
+   <div class="calcKeys functionKeys">BACKSPACE</div>
+   <div class="calcKeys functionKeys">1/X</div>
+   <div class="calcKeys functionKeys">X^2</div>
+   <div class="calcKeys functionKeys">X^1/2</div>
+   <div class="calcKeys functionKeys">/</div>
+   <div class="calcKeys">7</div>
+   <div class="calcKeys">8</div>
+   <div class="calcKeys">9</div>
+   <div class="calcKeys functionKeys">*</div>
+   <div class="calcKeys">4</div>
+   <div class="calcKeys">5</div>
+   <div class="calcKeys">6</div>
+   <div class="calcKeys functionKeys">-</div>
+   <div class="calcKeys">1</div>
+   <div class="calcKeys">2</div>
+   <div class="calcKeys">3</div>
+   <div class="calcKeys functionKeys">+</div>
+   <div class="calcKeys functionKeys">+/-</div>
+   <div class="calcKeys">0</div>
+   <div class="calcKeys functionKeys">.</div>
+   <div id="equalKey" class="calcKeys functionKeys equalDisplay">=</div>
   </div>
 
   <script src="script.js"></script>
