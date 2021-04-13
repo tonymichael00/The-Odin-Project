@@ -1,8 +1,8 @@
-let enteredNo = "0",
-   displayNo = "0";
+let entry = "0",
+   displayVar = "0";
 
-let storeOp = [],
-   storeCalc = [];
+let previousOp = [],
+   previousNum = [];
 
 let isClear = new Boolean(true),
    opRepeat = new Boolean(true),
@@ -14,18 +14,18 @@ let calcDisplay = document.getElementById("calcDisplay");
 document.addEventListener("keydown", function onPress(event) {
    // MAKE SURE ONLY 12 DIGIT NUMBERS ARE ENTERED
    if (event.key >= 0 && event.key <= 9) {
-      // if (!opRan) {
-      //    enteredNo = "0";
-      //    opRan = true;
-      // }
-      if (enteredNo.length == 12) {
+      if (!opRan) {
+         entry = "0";
+         opRan = true;
+      }
+      if (entry.length == 12) {
          window.alert("You can only input 12 digits.");
-      } else if (enteredNo == "0") {
-         enteredNo = event.key;
-         calcDisplay.textContent = enteredNo;
+      } else if (entry == "0") {
+         entry = event.key;
+         calcDisplay.textContent = entry;
       } else {
-         enteredNo += event.key;
-         calcDisplay.textContent = enteredNo;
+         entry += event.key;
+         calcDisplay.textContent = entry;
       }
       console.log("number");
    }
@@ -75,30 +75,30 @@ document.addEventListener("keydown", function onPress(event) {
 });
 function computeNo(mathOperation) {
    //FIRST TIME
-   // if (mathOperation == "equal" && isClear) {
-   //    return;
-   // }
+   if (mathOperation == "equal" && isClear) {
+      return;
+   }
 
    //OPERATIONS SWITCH
    switch (mathOperation) {
       case "subtraction": {
          console.log("mathOp subtract");
          subtraction();
-         console.log("enteredNo");
-         console.log(enteredNo);
+         console.log("entry");
+         console.log(entry);
          break;
       }
       case "equal": {
          equalTrig = new Boolean(true);
          console.log("mathOp equal");
-         console.table(storeOp);
-         // if (!isClear) {
-         //    storeOp[0]();
-         //    console.log("previousNum");
-         //    console.log(previousNum);
-         //    console.log("enteredNo");
-         //    console.log(enteredNo);
-         // }
+         console.table(previousOp);
+         if (!isClear) {
+            previousOp[0]();
+            console.log("previousNum");
+            console.log(previousNum);
+            console.log("entry");
+            console.log(entry);
+         }
          break;
       }
    }
@@ -109,26 +109,28 @@ function subtraction() {
    console.log("subtraction function");
 
    //first time push values into arrays
-   // if (isClear) {
-   //    previousNum.push(enteredNo);
-   //    storeOp.push(subtraction);
-   //    enteredNo = "0";
-   //    isClear = false;
-   //    return;
-   // }
+   if (isClear) {
+      previousNum.push(entry);
+      previousOp.push(subtraction);
+      entry = "0";
+      isClear = false;
+      return;
+   }
 
    //equal trigger shoves operation in and doesn't do math yet
    let answer =
-      parseFloat(previousNum[previousNum.length - 1]) - parseFloat(enteredNo);
+      parseFloat(previousNum[previousNum.length - 1]) - parseFloat(entry);
    previousNum.push(answer);
    calcDisplay.textContent = answer;
-   enteredNo = "0";
-   storeOp.push(subtraction);
-   // opRan = false;
-   console.table("storeOp");
-   console.table(storeOp);
+   entry = "0";
+   previousOp.push(subtraction);
+   opRan = false;
+   console.table("previousOp");
+   console.table(previousOp);
    console.table("previousNum");
    console.table(previousNum);
    console.log("answer");
    console.log(answer);
 }
+
+//calcDisplay.textContent = entry;
