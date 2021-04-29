@@ -1,8 +1,16 @@
+//TODO:
+//
+
 //console.log("works");
 let progStart = new Boolean(true);
+let decCheck = new Boolean(true);
+
+let entry = "";
+let solutions = [];
+let operations = [];
 
 let calcDisplay = document.getElementById("calcDisplay");
-
+calcDisplay.textContent = "working";
 // KEY EVENT
 document.addEventListener("keydown", function onPress(e) {
    switch (e.key) {
@@ -168,90 +176,209 @@ document.addEventListener("click", function onPress(e) {
 
 function mathCalc(calcKey) {
    console.log(calcKey);
-   let entry;
    if (
-      (calcKey === "1" ||
-         calcKey === "2" ||
-         calcKey === "3" ||
-         calcKey === "4" ||
-         calcKey === "5" ||
-         calcKey === "6" ||
-         calcKey === "7" ||
-         calcKey === "8" ||
-         calcKey === "9" ||
-         calcKey === "0" ||
-         calcKey === "+/-" ||
-         calcKey === ".") &&
-      progStart
+      calcKey === "1" ||
+      calcKey === "2" ||
+      calcKey === "3" ||
+      calcKey === "4" ||
+      calcKey === "5" ||
+      calcKey === "6" ||
+      calcKey === "7" ||
+      calcKey === "8" ||
+      calcKey === "9" ||
+      calcKey === "0" ||
+      calcKey === "+/-" ||
+      calcKey === "."
    ) {
       numCalc(calcKey);
-
-      //console.log("entry");
-      //console.log(entry);
-      console.log("numbers");
+      // entry += calcKey;
    } else if (
-      (calcKey === "%" ||
-         calcKey === "1/X" ||
-         calcKey === "X^2" ||
-         calcKey === "X^1/2") &&
-      progStart
+      calcKey === "%" ||
+      calcKey === "1/X" ||
+      calcKey === "X^2" ||
+      calcKey === "X^1/2"
    ) {
       quickCalc(calcKey);
       console.log("quickMath");
    } else if (
-      (calcKey === "+" ||
-         calcKey === "-" ||
-         calcKey === "*" ||
-         calcKey === "/") &&
-      progStart
+      calcKey === "+" ||
+      calcKey === "-" ||
+      calcKey === "*" ||
+      calcKey === "/"
    ) {
       arithCalc(calcKey);
       console.log("arithmetic");
-   } else if (calcKey === "=" && progStart) {
+   } else if (calcKey === "=") {
       equalCalc(calcKey);
       console.log("equal");
-   } else if (calcKey === "C" && progStart) {
+   } else if (calcKey === "C") {
       clearCalc(calcKey);
       console.log("clear");
-   } else if (calcKey === "PREVIOUS" && progStart) {
+   } else if (calcKey === "PREVIOUS") {
       previousCalc(calcKey);
       console.log("PREVIOUS");
-   } else if (calcKey === "BACKSPACE" && progStart) {
+   } else if (calcKey === "BACKSPACE") {
       backCalc(calcKey);
       console.log("BACKSPACE");
    }
 }
 
 function arithCalc(calcKey) {
-   console.log("arithCalc");
+   switch (calcKey) {
+      case "+":
+         if (progStart) {
+            operations.push(calcKey);
+            solutions.push(parseFloat(entry));
+            entry = "";
+            progStart = false;
+         } else {
+            operations.push(calcKey);
+            entry =
+               parseFloat(entry) + parseFloat(solutions[solutions.length - 1]);
+            solutions.push(entry);
+            entry = "";
+         }
+         console.log("solutions.length: " + solutions[solutions.length - 1]);
+         console.log("operations");
+         console.table(operations);
+         console.log("solutions");
+         console.table(solutions);
+         break;
+      case "-":
+         if (progStart) {
+            operations.push(calcKey);
+            solutions.push(parseFloat(entry));
+            entry = "";
+            progStart = false;
+         } else {
+            operations.push(calcKey);
+            entry =
+               parseFloat(solutions[solutions.length - 1]) - parseFloat(entry);
+            solutions.push(entry);
+            entry = "";
+         }
+         console.log("solutions.length: " + solutions[solutions.length - 1]);
+         console.log("operations");
+         console.table(operations);
+         console.log("solutions");
+         console.table(solutions);
+         break;
+      case "+":
+         if (progStart) {
+            operations.push(calcKey);
+            solutions.push(parseFloat(entry));
+            entry = "";
+            progStart = false;
+         } else {
+            operations.push(calcKey);
+            entry =
+               parseFloat(entry) + parseFloat(solutions[solutions.length - 1]);
+            solutions.push(entry);
+            entry = "";
+         }
+         console.log("solutions.length: " + solutions[solutions.length - 1]);
+         console.log("operations");
+         console.table(operations);
+         console.log("solutions");
+         console.table(solutions);
+         break;
+      case "+":
+         if (progStart) {
+            operations.push(calcKey);
+            solutions.push(parseFloat(entry));
+            entry = "";
+            progStart = false;
+         } else {
+            operations.push(calcKey);
+            entry =
+               parseFloat(entry) + parseFloat(solutions[solutions.length - 1]);
+            solutions.push(entry);
+            entry = "";
+         }
+         console.log("solutions.length: " + solutions[solutions.length - 1]);
+         console.log("operations");
+         console.table(operations);
+         console.log("solutions");
+         console.table(solutions);
+         break;
+
+         console.log("arithCalc");
+   }
 }
 
 function equalCalc(calcKey) {
    console.log("equalCalc");
 }
+
 function clearCalc(calcKey) {
    console.log("clearCalc");
 }
+
 function previousCalc(calcKey) {
    console.log("previousCalc");
 }
+
 function backCalc(calcKey) {
    console.log("backCalc");
 }
 
 function quickCalc(calcKey) {
+   switch (calcKey) {
+      case "%":
+         entry = parseFloat(entry) * 100;
+         break;
+      case "1/X":
+         entry = 1 / parseFloat(entry);
+         break;
+      case "X^2":
+         entry = entry * entry;
+         break;
+      case "X^1/2":
+         entry = Math.sqrt(entry);
+         break;
+   }
    console.log("quickCalc");
+   console.log(entry);
 }
 
 function numCalc(calcKey) {
-   let entry;
-   if (entry === undefined) {
-      entry = calcKey;
-      console.log("works");
-   } else {
-      entry += calcKey;
+   switch (calcKey) {
+      case ".":
+         if (decCheck) {
+            entry += calcKey;
+            decCheck = false;
+         }
+         break;
+      case "+/-":
+         entry = entry * -1;
+         entry = String(entry);
+         break;
+      default:
+         entry += calcKey;
+         break;
    }
 
    console.log("numCalc");
-   console.log(calcKey);
+   console.log("entry");
+   console.log(entry);
 }
+
+function subtraction(num1, num2) {
+   return num1 - num2;
+}
+
+function addition(num1, num2) {
+   return num1 + num2;
+}
+
+function multiplication(num1, num2) {
+   return num1 * num2;
+}
+
+function division(num1, num2) {
+   return num1 / num2;
+}
+
+// function updateDisplay(text){
+
+// }
