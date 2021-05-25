@@ -1,11 +1,10 @@
 //TODO:
-// pressing plus/minus after math operations equals NaN
-// displays can't divide by 0 when entry is 0 even though solution is more than 0
-//quickMath entry is not iterable
+//
 
 //console.log("works");
 let progStart = new Boolean(true);
 let decCheck = new Boolean(true);
+let quickCalcOrder = new Boolean(true);
 
 let entry = [""];
 let solutions = [];
@@ -193,7 +192,6 @@ function mathCalc(calcKey) {
       calcKey === "."
    ) {
       numCalc(calcKey);
-      // entry += calcKey;
    } else if (
       (calcKey === "%" ||
          calcKey === "1/X" ||
@@ -231,19 +229,34 @@ function arithCalc(calcKey) {
    if (entry[entry.length - 1] == "" && progStart === false) {
       return;
    }
+   if (parseFloat(entry[entry.length - 1]).toString() == "NaN") {
+      window.alert("Write a number.");
+      return;
+   }
+   quickCalcOrder = true;
+
+   //check for decimal on the end
+   // if (entry[entry.length - 1][entry[entry.length - 1].length] == ".") {
+   //    entry[entry.length - 1][entry[entry.length - 1].length] =
+   //       entry[entry.length - 1][entry[entry.length - 1].length].pop();
+   //    console.log("i cant believe this worked");
+   // }
+
    decCheck = true;
    switch (calcKey) {
       case "+":
          if (progStart) {
             operations.push(addition);
-            solutions.push(parseFloat(entry[entry.length - 1]));
-
+            entry[entry.length - 1] = parseFloat(entry[entry.length - 1]);
+            solutions.push(entry[entry.length - 1].toString());
+            entry[entry.length - 1] = entry[entry.length - 1].toString();
             entry.push("");
+            updateDisplay(solutions[solutions.length - 1]);
             progStart = false;
          } else {
             operations.push(addition);
             updateDisplay(operations[operations.length - 2]());
-            solutions.push(operations[operations.length - 2]());
+            solutions.push(operations[operations.length - 2]().toString());
             entry.push("");
          }
          console.log("solutions.length: " + solutions[solutions.length - 1]);
@@ -255,14 +268,16 @@ function arithCalc(calcKey) {
       case "-":
          if (progStart) {
             operations.push(subtraction);
-            solutions.push(parseFloat(entry[entry.length - 1]));
-
+            entry[entry.length - 1] = parseFloat(entry[entry.length - 1]);
+            solutions.push(entry[entry.length - 1].toString());
+            entry[entry.length - 1] = entry[entry.length - 1].toString();
             entry.push("");
+            updateDisplay(solutions[solutions.length - 1]);
             progStart = false;
          } else {
             operations.push(subtraction);
             updateDisplay(operations[operations.length - 2]());
-            solutions.push(operations[operations.length - 2]());
+            solutions.push(operations[operations.length - 2]().toString());
             entry.push("");
          }
          console.log("solutions.length: " + solutions[solutions.length - 1]);
@@ -278,10 +293,13 @@ function arithCalc(calcKey) {
                window.alert("Not even a Jedi can divide by zero.");
                break;
             }
-            operations.push(division);
-            solutions.push(parseFloat(entry[entry.length - 1]));
 
+            operations.push(division);
+            entry[entry.length - 1] = parseFloat(entry[entry.length - 1]);
+            entry[entry.length - 1] = entry[entry.length - 1].toString();
+            solutions.push(entry[entry.length - 1].toString());
             entry.push("");
+            updateDisplay(solutions[solutions.length - 1]);
             progStart = false;
          } else {
             if (parseFloat(solutions[solutions.length - 1]) === 0) {
@@ -303,14 +321,16 @@ function arithCalc(calcKey) {
       case "*":
          if (progStart) {
             operations.push(multiplication);
-            solutions.push(parseFloat(entry[entry.length - 1]));
-
+            entry[entry.length - 1] = parseFloat(entry[entry.length - 1]);
+            entry[entry.length - 1] = entry[entry.length - 1].toString();
+            solutions.push(entry[entry.length - 1].toString());
             entry.push("");
+            updateDisplay(solutions[solutions.length - 1]);
             progStart = false;
          } else {
             operations.push(multiplication);
             updateDisplay(operations[operations.length - 2]());
-            solutions.push(operations[operations.length - 2]());
+            solutions.push(operations[operations.length - 2]().toString());
             entry.push("");
          }
          console.log("solutions.length: " + solutions[solutions.length - 1]);
@@ -323,21 +343,25 @@ function arithCalc(calcKey) {
 }
 
 function equalCalc(calcKey) {
-   // if (!progStart) {
-   //    operations.push(addition);
-   //    solutions.push(operations[operations.length - 2]());
-   //    entry.push("");
-   // }
-   // console.log("solutions.length: " + solutions[solutions.length - 1]);
-   // console.log("operations");
-   // console.table(operations);
-   // console.log("solutions");
-   // console.table(solutions);
+   if (parseFloat(entry[entry.length - 1]).toString() == "NaN") {
+      window.alert("Write a number.");
+      return;
+   }
+   if (operations[operations.length - 1] == undefined) {
+      return;
+   }
+
+   quickCalcOrder = true;
+
+   updateDisplay(operations[operations.length - 1]());
+
+   clearCalc("equal");
 
    console.log("equalCalc");
 }
 
 function clearCalc(calcKey) {
+   quickCalcOrder = true;
    progStart = new Boolean(true);
    decCheck = new Boolean(true);
 
@@ -345,31 +369,89 @@ function clearCalc(calcKey) {
    solutions = [];
    operations = [];
 
+   if (!(calcKey == "equal")) {
+      updateDisplay(entry);
+   }
    console.log("clearCalc");
 }
 
 function previousCalc(calcKey) {
+   quickCalcOrder = true;
+
+   if (entry.length > solutions.length && entry.length > operations.length) {
+      entry.pop();
+      solutions.pop();
+      operations.pop();
+   }
+   if (entry.length == solutions.length && entry.length == operations.length) {
+      solutions.pop();
+      operations.pop();
+   }
+
+   if (entry == undefined) {
+      entry[entry.length - 1] = "";
+   }
+   updateDisplay(entry[entry.length - 1]);
+
+   console.log("entry");
+   console.table(entry);
+   console.log("solutions");
+   console.table(solutions);
+   console.log("operations");
+   console.table(operations);
    console.log("previousCalc");
 }
 
 function backCalc(calcKey) {
+   quickCalcOrder = true;
+
+   entry[entry.length - 1] = entry[entry.length - 1].substring(
+      0,
+      entry[entry.length - 1].length - 1
+   );
+
+   updateDisplay(entry[entry.length - 1]);
    console.log("backCalc");
+   console.log("entry");
+   console.table(entry);
 }
 
 function quickCalc(calcKey) {
+   if (parseFloat(entry[entry.length - 1]).toString() == "NaN") {
+      window.alert("Write a number.");
+      return;
+   }
+
+   //stops input of numbers after quickMath
+   quickCalcOrder = false;
+
+   //check for decimal on the end
+   // if (entry[entry.length - 1][entry[entry.length - 1].length] == ".") {
+   //    entry[entry.length - 1][entry[entry.length - 1].length].pop();
+   //    console.log("i cant believe this worked");
+   // }
+
    switch (calcKey) {
       case "%":
          entry[entry.length - 1] = parseFloat(entry[entry.length - 1]) * 100;
+         entry[entry.length - 1] = entry[entry.length - 1].toString();
+         updateDisplay(entry[entry.length - 1]);
          break;
       case "1/X":
          entry[entry.length - 1] = 1 / parseFloat(entry[entry.length - 1]);
+         entry[entry.length - 1] = entry[entry.length - 1].toString();
+         updateDisplay(entry[entry.length - 1]);
          break;
       case "X^2":
          entry[entry.length - 1] =
             entry[entry.length - 1] * entry[entry.length - 1];
+         entry[entry.length - 1] = entry[entry.length - 1].toString();
+         updateDisplay(entry[entry.length - 1]);
          break;
       case "X^1/2":
          entry[entry.length - 1] = Math.sqrt(entry[entry.length - 1]);
+         entry[entry.length - 1] = entry[entry.length - 1].toString();
+         updateDisplay(entry[entry.length - 1]);
          break;
    }
    console.log("quickCalc");
@@ -377,15 +459,23 @@ function quickCalc(calcKey) {
 }
 
 function numCalc(calcKey) {
+   //stops input of numbers after quickMath
+   if (!quickCalcOrder) {
+      return;
+   }
+   if (entry[entry.length - 1] == undefined) {
+      entry[entry.length - 1] = "";
+   }
+
    switch (calcKey) {
       case ".":
+         //check to make sure there is one decimal
          for (let i = 0; i < entry[entry.length - 1].length; i++) {
             if (entry[entry.length - 1][i] === ".") {
                decCheck = false;
             }
          }
          if (decCheck) {
-            // entry += calcKey;
             entry[entry.length - 1] += calcKey;
          }
          updateDisplay(entry[entry.length - 1]);
@@ -400,7 +490,7 @@ function numCalc(calcKey) {
             updateDisplay(entry[entry.length - 1]);
             break;
          }
-         entry[entry.length - 1] = entry * -1;
+         entry[entry.length - 1] = parseFloat(entry[entry.length - 1]) * -1;
          entry[entry.length - 1] = entry[entry.length - 1].toString();
          updateDisplay(entry[entry.length - 1]);
 
@@ -412,17 +502,19 @@ function numCalc(calcKey) {
             window.alert("0 can't be negative.");
             break;
          }
+         //12 digit check
          for (let char of entry[entry.length - 1]) {
             if (char <= 9 && char >= 0) {
                i++;
-               if (i >= 12) {
-                  window.alert(
-                     "I'm sorry Dave. I can't let you type more than 12 digits."
-                  );
-                  entryCheck = false;
-               }
             }
          }
+         if (i >= 12) {
+            window.alert(
+               "I'm sorry Dave. I can't let you type more than 12 digits."
+            );
+            entryCheck = false;
+         }
+
          if (!entryCheck) {
             break;
          }
@@ -443,34 +535,38 @@ function subtraction() {
    return (
       parseFloat(solutions[solutions.length - 1]) -
       parseFloat(entry[entry.length - 1])
-   );
+   ).toString();
 }
 
 function addition() {
    return (
       parseFloat(solutions[solutions.length - 1]) +
       parseFloat(entry[entry.length - 1])
-   );
+   ).toString();
 }
 
 function multiplication() {
    return (
       parseFloat(solutions[solutions.length - 1]) *
       parseFloat(entry[entry.length - 1])
-   );
+   ).toString();
 }
 
 function division() {
    return (
       parseFloat(solutions[solutions.length - 1]) /
       parseFloat(entry[entry.length - 1])
-   );
+   ).toString();
 }
 
 function updateDisplay(text) {
+   if (text == "" || text == undefined) {
+      text = "0";
+   }
    text = text.toString();
+
    if (text.length >= 12) {
-      text = Math.round(parseFloat(text) * 100) / 100;
+      text = Math.round(parseFloat(text) * 1000) / 1000;
       text = Number.parseFloat(text).toExponential(8);
    }
    console.log("text.length " + text.length);
