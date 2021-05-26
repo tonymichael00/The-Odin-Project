@@ -1,4 +1,6 @@
 //TODO:
+//previous is messed up. got NaN with -
+//prevent from adding onto entry after equal
 //
 
 //console.log("works");
@@ -352,12 +354,19 @@ function equalCalc(calcKey) {
    }
 
    quickCalcOrder = true;
-
+   let tempEntry = operations[operations.length - 1]();
    updateDisplay(operations[operations.length - 1]());
 
    clearCalc("equal");
+   entry[entry.length - 1] = tempEntry;
 
    console.log("equalCalc");
+   console.log("entry");
+   console.table(entry);
+   console.log("solutions");
+   console.table(solutions);
+   console.log("operations");
+   console.table(operations);
 }
 
 function clearCalc(calcKey) {
@@ -378,6 +387,17 @@ function clearCalc(calcKey) {
 function previousCalc(calcKey) {
    quickCalcOrder = true;
 
+   // //clears if only 1 entry
+   // if (operations.length == 0) {
+   //    clearCalc();
+   //    return;
+   // }
+   if (entry.length == 1) {
+      clearCalc();
+      console.log("entry array 1");
+      return;
+   }
+   //clears arrays to entry
    if (entry.length > solutions.length && entry.length > operations.length) {
       entry.pop();
       solutions.pop();
@@ -388,10 +408,19 @@ function previousCalc(calcKey) {
       operations.pop();
    }
 
-   if (entry == undefined) {
-      entry[entry.length - 1] = "";
-   }
    updateDisplay(entry[entry.length - 1]);
+
+   //if there is one entry resets progstart
+   if (entry.length == 1) {
+      progStart = true;
+      console.log("reset progstart");
+   }
+   // //sets entry array as string if empty
+   // if (entry[entry.length - 1] == undefined) {
+   //    entry[entry.length - 1] = "";
+   // }
+
+   //entry[entry.length - 1] = "";
 
    console.log("entry");
    console.table(entry);
@@ -433,7 +462,7 @@ function quickCalc(calcKey) {
 
    switch (calcKey) {
       case "%":
-         entry[entry.length - 1] = parseFloat(entry[entry.length - 1]) * 100;
+         entry[entry.length - 1] = parseFloat(entry[entry.length - 1]) / 100;
          entry[entry.length - 1] = entry[entry.length - 1].toString();
          updateDisplay(entry[entry.length - 1]);
          break;
@@ -532,6 +561,13 @@ function numCalc(calcKey) {
 }
 
 function subtraction() {
+   // if (solutions[solutions.length - 1] == "") {
+   //    solutions[solutions.length - 1] = 0;
+   // }
+   // if (entry[entry.length - 1] == "") {
+   //    entry[entry.length - 1] = 0;
+   // }
+
    return (
       parseFloat(solutions[solutions.length - 1]) -
       parseFloat(entry[entry.length - 1])
@@ -539,6 +575,12 @@ function subtraction() {
 }
 
 function addition() {
+   // if (solutions[solutions.length - 1] == "") {
+   //    solutions[solutions.length - 1] = 0;
+   // }
+   // if (entry[entry.length - 1] == "") {
+   //    entry[entry.length - 1] = 0;
+   // }
    return (
       parseFloat(solutions[solutions.length - 1]) +
       parseFloat(entry[entry.length - 1])
@@ -560,13 +602,13 @@ function division() {
 }
 
 function updateDisplay(text) {
-   if (text == "" || text == undefined) {
+   if (text == "" || text == undefined || text == NaN) {
       text = "0";
    }
    text = text.toString();
 
    if (text.length >= 12) {
-      text = Math.round(parseFloat(text) * 1000) / 1000;
+      text = Math.round(parseFloat(text) * 100000000) / 100000000;
       text = Number.parseFloat(text).toExponential(8);
    }
    console.log("text.length " + text.length);
