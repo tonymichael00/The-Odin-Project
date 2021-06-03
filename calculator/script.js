@@ -1,7 +1,8 @@
 //TODO:
 //previous is messed up. got NaN with -
 //prevent from adding onto entry after equal
-//
+//cant add then use quickmath
+//previous - show previous solution but make entry blank
 
 //console.log("works");
 let progStart = new Boolean(true);
@@ -13,7 +14,7 @@ let solutions = [];
 let operations = [];
 
 let calcDisplay = document.getElementById("calcDisplay");
-calcDisplay.textContent = "working";
+calcDisplay.textContent = "";
 // KEY EVENT
 document.addEventListener("keydown", function onPress(e) {
    switch (e.key) {
@@ -89,7 +90,7 @@ document.addEventListener("keydown", function onPress(e) {
          mathCalc("0");
          break;
       case "ArrowLeft":
-         mathCalc("PREVIOUS");
+         mathCalc("CE");
          break;
       case "ArrowUp":
       case "ArrowDown":
@@ -108,8 +109,8 @@ document.addEventListener("click", function onPress(e) {
       case "%":
          mathCalc("%");
          break;
-      case "PREVIOUS":
-         mathCalc("PREVIOUS");
+      case "CE":
+         mathCalc("CE");
          break;
       case "C":
          mathCalc("C");
@@ -217,9 +218,9 @@ function mathCalc(calcKey) {
    } else if (calcKey === "C") {
       clearCalc(calcKey);
       console.log("clear");
-   } else if (calcKey === "PREVIOUS") {
-      previousCalc(calcKey);
-      console.log("PREVIOUS");
+   } else if (calcKey === "CE") {
+      CE(calcKey);
+      console.log("CE");
    } else if (calcKey === "BACKSPACE") {
       backCalc(calcKey);
       console.log("BACKSPACE");
@@ -384,51 +385,19 @@ function clearCalc(calcKey) {
    console.log("clearCalc");
 }
 
-function previousCalc(calcKey) {
+function CE(calcKey) {
    quickCalcOrder = true;
 
-   // //clears if only 1 entry
-   // if (operations.length == 0) {
-   //    clearCalc();
-   //    return;
-   // }
-   if (entry.length == 1) {
-      clearCalc();
-      console.log("entry array 1");
-      return;
-   }
-   //clears arrays to entry
-   if (entry.length > solutions.length && entry.length > operations.length) {
-      entry.pop();
-      solutions.pop();
-      operations.pop();
-   }
-   if (entry.length == solutions.length && entry.length == operations.length) {
-      solutions.pop();
-      operations.pop();
-   }
+   entry[entry.length - 1] = "";
 
-   updateDisplay(entry[entry.length - 1]);
-
-   //if there is one entry resets progstart
-   if (entry.length == 1) {
-      progStart = true;
-      console.log("reset progstart");
-   }
-   // //sets entry array as string if empty
-   // if (entry[entry.length - 1] == undefined) {
-   //    entry[entry.length - 1] = "";
-   // }
-
-   //entry[entry.length - 1] = "";
-
+   updateDisplay();
+   console.log("CE");
    console.log("entry");
    console.table(entry);
    console.log("solutions");
    console.table(solutions);
    console.log("operations");
    console.table(operations);
-   console.log("previousCalc");
 }
 
 function backCalc(calcKey) {
@@ -603,7 +572,7 @@ function division() {
 
 function updateDisplay(text) {
    if (text == "" || text == undefined || text == NaN) {
-      text = "0";
+      text = "";
    }
    text = text.toString();
 
