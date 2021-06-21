@@ -106,7 +106,7 @@ document.addEventListener("click", function onPress(e) {
       case "1/X":
          mathCalc("1/X");
          break;
-      case "%":
+      case "percent":
          mathCalc("%");
          break;
       case "CE":
