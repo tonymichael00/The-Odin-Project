@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Calculator</title>
+   </head>
+   <body>
+      <style>
+                  html {
+                     height: 100%;
+                     width: 100%;
+                     margin: 0px;
+                     padding: 0px;
+                  }
+                  body {
+                     display: flex;
+                     flex-direction: column;
+                     align-items: center;
+                     background-color: rgb(175, 175, 175);
+                     height: 100%;
+                     width: 100%;
+                     margin: 0px;
+                     padding: 0px;
+                  }
+                  p {
+                     font-family: Arial, Helvetica, sans-serif;
+                  }
+                  h1 {
+                     text-align: center;
+                  }
+                  h2 {
+                     font-size: 1em;
+                  }
+                  #addBook {
+                     background-color: rgb(224, 224, 224);
+                     height: 30px;
+                     font-size: 0.9em;
+                     text-align: center;
+                  }
+                  #bookCol {
+                     background-color: black;
+                     display: flex;
+                     flex-wrap: wrap;
+                     align-content: flex-start;
+                     justify-content: space-evenly;
+                     width: 75vw;
+                  }
+                  .books {
+                     background-color: rgb(224, 224, 224);
+                     border-radius: 6px;
+                     margin: 6px;
+                     text-align: center;
+         \         }
+                  .books p {
+                     text-align: center;
+                     margin: 6px;
+                  }
+                  form.bookForm {
+                     display: table;
+                     padding-bottom: 5px;
+                  }
+                  .bookInp {
+                     display: table-row;
+                  }
+
+                  label,
+                  input {
+                     display: table-cell;
+                     margin-bottom: 5px;
+                  }
+
+                  label {
+                     padding-right: 10px;
+                  }
+      </style>
+      <h1><p>Library</p></h1>
+      <form method="get" class="bookForm">
+         <div class="bookInp">
+            <label for="title">Title: </label>
+            <input type="text" name="title" id="title" required />
+         </div>
+         <div class="bookInp">
+            <label for="author">Author: </label>
+            <input type="text" name="author" id="author" required />
+         </div>
+         <div class="bookInp">
+            <label for="pgRead">Pages Read: </label>
+            <input type="text" name="pgRead" id="pgRead" required />
+         </div>
+         <div class="bookInp">
+            <label for="pgTotal">Total Pages: </label>
+            <input type="text" name="pgTotal" id="pgTotal" required />
+         </div>
+         <div class="bookInp">
+            <label for="finishChk">Finished: </label>
+            <input
+               type="checkbox"
+               name="finishChk"
+               id="finishChk"
+               value="finished"
+            />
+         </div>
+         <button id="addBook" type="submit" class="bookInp">Add</button>
+      </form>
+
+      <div id="bookCol">
+         <div class="books">
+            <p>
+               Adventures of Sherlock Holmes <br />
+               Sir Arthur Conan Doyle <br />
+               112 / 700 <br />
+               Unfinished
+            </p>
+            <button class="remove">Remove</button>
+            <button class="finished">Finished</button>
+         </div>
+         <div class="books">
+            <p>
+               The Count of Monte Cristo<br />
+               Alexandre Dumas <br />
+               888 / 888 <br />
+               Finished
+            </p>
+            <button class="remove">Remove</button>
+            <button class="finished">Finished</button>
+         </div>
+      </div>
+      <script src="script.js"></script>
+   </body>
+</html>
