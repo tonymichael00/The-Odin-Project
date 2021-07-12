@@ -31,21 +31,42 @@ class Book {
 
    create() {
       let div = document.createElement("div");
-      let p = document.createElement("p");
-      let br = document.createElement("br");
-      bookArea.appendChild(div);
-      div.className = "books";
-      div.append(p);
-      // div.append(br);
+      let bookDivs = document.querySelector("div.books");
+      console.log(bookDivs);
+      // let p = document.createElement("p");
 
-      p.textContent =
-         this.title +
-         "\n" +
-         this.author +
-         "\n" +
-         this.pgRead +
-         "/" +
-         this.pgTotal;
+      // div.append(p, what);
+
+      function createP(numP, select) {
+         for (let i = 0; i < numP; i++) {
+            let p = document.createElement("p");
+            select.append(p);
+         }
+      }
+
+      function changeP() {
+         let selectP =
+            bookDivs[bookDivs.length - 1].document.querySelector("p");
+
+         selectP[0] = this.title;
+         selectP[1] = this.author;
+         selectP[2] = this.pgRead + " / " + this.pgTotal;
+      }
+      bookArea.append(div);
+      div.className = "books";
+      createP(4, div);
+      changeP();
+
+      // bookDivs[bookDivs.length - 1].document.querySelector("p");
+
+      // div.insertAdjacentElement("beforeend", p);
+
+      // div.textContent = this.title;
+      // div.insertAdjacentElement("beforeend", p);
+      // div.textContent = this.author;
+      // div.insertAdjacentElement("beforeend", p);
+      // div.textContent = this.pgRead + " / " + this.pgTotal;
+
       // p.textContent = `${this.title}
       // ${this.author}
       // ${this.pgRead}/${this.pgTotal}`;
