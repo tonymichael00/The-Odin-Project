@@ -5,7 +5,7 @@
 
 document.getElementById("playArea").addEventListener("mousedown", function (e) {
    const newX = createXO(e);
-   newX.createO();
+   newX.createX();
 });
 
 const createXO = (e) => {
