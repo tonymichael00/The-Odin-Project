@@ -1,0 +1,22 @@
+.addBook {
+   width: min-content;
+}
+
+.addBook form {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+}
+
+.addBook label {
+   white-space: nowrap;
+}
+
+td {
+   border-color: black;
+   border-width: 1px;
+   border-style: solid;
+}
+
+/* body {
+   background-color: red;
+} */
