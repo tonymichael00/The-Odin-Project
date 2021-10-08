@@ -12,6 +12,32 @@ const book_index = (req, res) => {
       });
 };
 
+const book_create = (req, res) => {
+   const book = new Book(req.body);
+
+   book
+      .save()
+      .then((result) => {
+         res.redirect('/index');
+      })
+      .catch((err) => {
+         console.log(err);
+      });
+};
+
+// app.post('/books', (req, res) => {
+//    const book = new Book(req.body);
+
+//    book
+//       .save()
+//       .then((result) => {
+//          res.redirect('/index');
+//       })
+//       .catch((err) => {
+//          console.log(err);
+//       });
+// });
+
 // const book_details = (req, res) => {
 
 // }
@@ -58,6 +84,7 @@ const book_index = (req, res) => {
 
 module.exports = {
    book_index,
+   book_create,
    //    blog_details,
    //    blog_create_get,
    //    blog_create_post,

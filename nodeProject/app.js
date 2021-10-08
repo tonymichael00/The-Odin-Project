@@ -27,19 +27,19 @@ app.use((req, res, next) => {
    next();
 });
 
-//retrieve form data
-app.post('/books', (req, res) => {
-   const book = new Book(req.body);
-
-   book
-      .save()
-      .then((result) => {
-         res.redirect('/index');
-      })
-      .catch((err) => {
-         console.log(err);
-      });
+// routes
+app.get('/', (req, res) => {
+   res.redirect('/books');
 });
+
+// app.get('/about', (req, res) => {
+//    res.render('about', { title: 'About' });
+// });
+
+//book routes
+app.use('/books', bookRoutes);
+
+//retrieve form data
 
 //retrieve book list
 ////
@@ -55,8 +55,11 @@ app.post('/books', (req, res) => {
 // };
 //console.log();
 
+app.post('/', function (req, res) {
+   res.send('POST request to the homepage');
+});
 app.get('/', (req, res) => {
-   res.redirect('index');
+   res.redirect('books');
 });
 app.get('/index', (req, res) => {
    res.render('index');
@@ -69,6 +72,11 @@ app.get('/update', (req, res) => {
 });
 app.get('/delete', (req, res) => {
    res.render('delete');
+});
+
+// 404 page
+app.use((req, res) => {
+   res.status(404).render('404', { title: '404' });
 });
 
 //app.use('/', bookRoutes);
