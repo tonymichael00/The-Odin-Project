@@ -22,6 +22,8 @@ const book_create = (req, res) => {
       })
       .catch((err) => {
          console.log(err);
+         // window.alert('Data Error');
+         // location.reload();
       });
 };
 
