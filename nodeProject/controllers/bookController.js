@@ -1,94 +1,75 @@
 const Book = require('../models/book');
 
-const book_index = (req, res) => {
-   Book.find()
-      .sort({ createdAt: -1 })
-      .then((result) => {
-         res.render('index', { books: result });
-         console.log({ books: result });
-      })
-      .catch((err) => {
-         console.log(err);
-      });
+// index
+const bookIndex = (req, res) => {
+  Book.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render('index', { books: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
-const book_create = (req, res) => {
-   const book = new Book(req.body);
+// create
+const bookCreatePost = (req, res) => {
+  const book = new Book(req.body);
 
-   book
-      .save()
-      .then((result) => {
-         res.redirect('/index');
-      })
-      .catch((err) => {
-         console.log(err);
-         // window.alert('Data Error');
-         // location.reload();
-      });
+  book
+    .save()
+    .then((result) => {
+      res.redirect('/index');
+    })
+    .catch((err) => {
+      console.log(err);
+      // window.alert('Data Error');
+      // location.reload();
+    });
 };
 
-// app.post('/books', (req, res) => {
-//    const book = new Book(req.body);
+const bookCreateGet = (req, res) => {
+  res.render('create');
+};
 
-//    book
-//       .save()
-//       .then((result) => {
-//          res.redirect('/index');
-//       })
-//       .catch((err) => {
-//          console.log(err);
-//       });
-// });
+// delete
+const bookDeleteGet = (req, res) => {
+  // const book = new Book(req.body);
+  const search = document.querySelector('#book-search');
 
-// const book_details = (req, res) => {
+  // console.log(searchOptions.value.name);
+  res.render('delete');
+};
 
-// }
+const bookSearch = (req, res) => {
+  const book = new Book(req.body);
+  const searchOptions = document.querySelector('#book-search');
 
-// const blog_details = (req, res) => {
-//    const id = req.params.id;
-//    Blog.findById(id)
-//       .then((result) => {
-//          res.render('details', { blog: result, title: 'Blog Details' });
-//       })
-//       .catch((err) => {
-//          console.log(err);
-//       });
-// };
+  console.log(searchOptions.value.name);
+  // book.find();
+};
 
-// const blog_create_get = (req, res) => {
-//    res.render('create', { title: 'Create a new blog' });
-// };
+const bookDeletePost = (req, res) => {
+  const book = new Book(req.body);
+};
 
-// const blog_create_post = (req, res) => {
-//    const blog = new Blog(req.body);
+// update
+const bookUpdateGet = (req, res) => {
+  res.render('update');
+};
 
-//    blog
-//       .save()
-//       .then((result) => {
-//          res.redirect('/blogs');
-//       })
-//       .catch((err) => {
-//          console.log(err);
-//       });
-// };
-
-// const blog_delete = (req, res) => {
-//    const id = req.params.id;
-
-//    Blog.findByIdAndDelete(id)
-//       .then((result) => {
-//          res.json({ redirect: '/blogs' });
-//       })
-//       .catch((err) => {
-//          console.log(err);
-//       });
-// };
+// weather
+const weatherGet = (req, res) => {
+  res.render('weather');
+};
 
 module.exports = {
-   book_index,
-   book_create,
-   //    blog_details,
-   //    blog_create_get,
-   //    blog_create_post,
-   //    blog_delete,
+  bookIndex,
+  bookCreatePost,
+  bookCreateGet,
+  bookDeletePost,
+  bookDeleteGet,
+  bookUpdateGet,
+  bookSearch,
+  weatherGet,
 };

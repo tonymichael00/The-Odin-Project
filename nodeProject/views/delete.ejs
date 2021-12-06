@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-   <%- include("./partials/head.ejs") %>
-   <body>
-      <%- include("./partials/title.ejs") %>
-      <h2>DELETE</h2>
-      <%- include("./partials/nav.ejs") %>
-   </body>
+  <%- include("./partials/head.ejs") %> <%- include("./deleteJs/deleteJs.ejs")
+  %>
+  <body>
+    <%- include("./partials/title.ejs") %>
+    <h2>DELETE</h2>
+    <%- include("./partials/nav.ejs") %>
+
+    <div class="deleteBook">
+      <form action="/delete" method="get">
+        <label for="book-search">Search</label>
+        <select id="book-search" required>
+          <option value="">--Please choose an option--</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+          <option value="datePub">Date Published</option>
+          <option value="isbn">ISBN</option>
+        </select>
+        <input type="search" name="deleteEntry" id="deleteEntry" required />
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
 </html>

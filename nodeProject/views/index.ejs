@@ -1,32 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-   <%- include("./partials/head.ejs") %>
+  <%- include("./partials/head.ejs") %>
 
-   <body>
-      <% //console.log(books); %> <%- include("./partials/title.ejs") %>
-      <h2>READ</h2>
-      <%- include("./partials/nav.ejs") %>
-      <table>
-         <% //console.log(books.length); %>
+  <body>
+    <% //console.log(books); %> <%- include("./partials/title.ejs") %>
+    <h2>READ</h2>
+    <%- include("./partials/nav.ejs") %>
+    <table>
+      <tr>
+        <td>TITLE</td>
+        <td>AUTHOR</td>
+        <td>DATE PUB</td>
+        <td>ISBN</td>
+      </tr>
+      <% if (books.length > 0){ books.forEach(book => {%>
+      <tr>
+        <td><%= book.title%></td>
+        <td><%= book.author%></td>
+        <td><%= book.datePub%></td>
+        <td><%= book.isbn%></td>
+      </tr>
+      <%}) } %>
+    </table>
+    <img src="#" alt="billmurray" />
 
-         <tr>
-            <td>TITLE</td>
-            <td>AUTHOR</td>
-            <td>DATE PUB</td>
-            <td>ISBN</td>
-         </tr>
-         <% //if (books.length > 0){ books.forEach(book => {%>
-         <td><% %></td>
-         <td></td>
-         <td></td>
-         <td></td>
-         <%//}) } %>
-         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         </tr>
-      </table>
-   </body>
+    <script>
+      const img = document.querySelector('img');
+
+      async function billMurrayGifs() {
+        const response = await fetch(
+          'https://api.giphy.com/v1/gifs/translate?api_key=l4Z3AErFMfwTwhEOrbyWeftaqD6tA3PI&s=billMurray',
+          {
+            mode: 'cors',
+          }
+        );
+        const bmData = await response.json();
+        img.src = bmData.data.images.original.url;
+      }
+      billMurrayGifs();
+    </script>
+  </body>
 </html>

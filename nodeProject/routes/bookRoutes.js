@@ -3,21 +3,18 @@ const bookController = require('../controllers/bookController');
 
 const router = express.Router();
 
-router.get('/', bookController.book_index);
-router.post('/', bookController.book_create);
+router.get('/index', bookController.bookIndex);
+router.post('/', bookController.bookCreatePost);
+router.get('/create', bookController.bookCreateGet);
+router.get('/update', bookController.bookUpdateGet);
+// router.post('/', bookController.book_delete_post);
+// router.get('/delete', bookController.book_search);
+router.get('/delete', bookController.bookDeleteGet);
+router.get('/weather', bookController.weatherGet);
+
+// 404 page
+router.use((req, res) => {
+  res.status(404).render('404');
+});
 
 module.exports = router;
-
-// const express = require('express');
-// const blogController = require('../controllers/blogController');
-
-// const router = express.Router();
-
-// // blog routes
-// router.get('/', blogController.blog_index);
-// router.post('/', blogController.blog_create_post);
-// router.get('/create', blogController.blog_create_get);
-// router.get('/:id', blogController.blog_details);
-// router.delete('/:id', blogController.blog_delete);
-
-// module.exports = router;

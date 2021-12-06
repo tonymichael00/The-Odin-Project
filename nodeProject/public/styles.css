@@ -17,6 +17,14 @@ td {
    border-style: solid;
 }
 
+.deleteBook {
+   width: 100%;
+}
+
+#deleteEntry {
+   width: 300px;
+}
+
 /* body {
    background-color: red;
 } */
