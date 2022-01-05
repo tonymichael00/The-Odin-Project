@@ -11,6 +11,7 @@ router.get('/update', bookController.bookUpdateGet);
 // router.get('/delete', bookController.book_search);
 router.get('/delete', bookController.bookDeleteGet);
 router.get('/weather', bookController.weatherGet);
+router.get('/battleship', bookController.battleshipGet);
 
 // 404 page
 router.use((req, res) => {

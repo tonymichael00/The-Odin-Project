@@ -1,30 +1,40 @@
 .addBook {
-   width: min-content;
+  width: min-content;
 }
 
 .addBook form {
-   display: grid;
-   grid-template-columns: repeat(2, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .addBook label {
-   white-space: nowrap;
+  white-space: nowrap;
 }
 
 td {
-   border-color: black;
-   border-width: 1px;
-   border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .deleteBook {
-   width: 100%;
+  width: 100%;
 }
 
 #deleteEntry {
-   width: 300px;
+  width: 300px;
 }
 
+.board tr td {
+  height: 30px;
+  width: 30px;
+}
+
+.board2 tr td {
+  height: 30px;
+  width: 30px;
+  border-color: rgb(194, 0, 0);
+}
 /* body {
    background-color: red;
 } */

@@ -35,7 +35,7 @@ const bookCreateGet = (req, res) => {
 // delete
 const bookDeleteGet = (req, res) => {
   // const book = new Book(req.body);
-  const search = document.querySelector('#book-search');
+  // const search = document.querySelector('#book-search');
 
   // console.log(searchOptions.value.name);
   res.render('delete');
@@ -63,6 +63,11 @@ const weatherGet = (req, res) => {
   res.render('weather');
 };
 
+const battleshipGet = (req, res) => {
+  res.render('battleship');
+  res.render('battleship');
+};
+
 module.exports = {
   bookIndex,
   bookCreatePost,
@@ -72,4 +77,5 @@ module.exports = {
   bookUpdateGet,
   bookSearch,
   weatherGet,
+  battleshipGet,
 };
