@@ -1,0 +1,74 @@
+body {
+  background-color: #000000;
+  color: hsl(0, 0%, 100%);
+  margin: 0px;
+}
+
+.app {
+  min-height: 100vh;
+  /* gap: 1em; */
+}
+
+#chart-area {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 20em);
+  justify-content: center;
+  gap: 2em;
+}
+
+.chart-unit {
+  /* position: relative; */
+  display: grid;
+  grid-template-columns: 2.5em 10em 2.5em;
+  width: 20em;
+  height: 5em;
+}
+
+.shape-sides {
+  /* position: absolute;
+  top: 5em;
+  left: 15em; */
+  /* height: 5em;
+  width: 5em; */
+}
+
+.txt-cont {
+  /* display: flex; */
+  position: relative;
+
+  height: 5em;
+  width: 10em;
+  /* border-bottom: 0.1em solid white; */
+}
+
+.txt-cont p {
+  /* z-index: 1; */
+  margin: 0;
+  height: 5em;
+  width: 10em;
+  font-size: 0.9rem;
+}
+
+.txt-shape {
+  /* margin: 1em; */
+  /* height: 5em; */
+  /* min-width: 20em; */
+  /* z-index: -1; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* bottom: 0;
+  right: 0; */
+  width: 100%;
+  height: 100%;
+}
+
+.left-side {
+  transform: scaleX(-1);
+}
+
+/* 
+.shapeCont::before {
+  content: url('/public/top&bottom.svg');
+} */
