@@ -1,6 +1,7 @@
 import './App.css';
 import ChartUnit from './ChartUnit';
 import NavBar from './NavBar/NavBar';
+import Terminal from './shapes/Terminal';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <ChartUnit />
         <ChartUnit />
         <ChartUnit />
+        <Terminal />
       </div>
     </div>
   );
