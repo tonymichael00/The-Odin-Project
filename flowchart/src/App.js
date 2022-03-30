@@ -8,10 +8,10 @@ function App() {
     <div className="app">
       <NavBar />
       <div id="chart-area">
-        <ChartUnit />
-        <ChartUnit />
-        <ChartUnit />
-        <ChartUnit />
+        <Terminal />
+        <Terminal />
+        <Terminal />
+        <Terminal />
         <Terminal />
       </div>
     </div>
