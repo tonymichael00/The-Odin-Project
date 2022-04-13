@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
-function Terminal() {
+function Terminal({ id, text, changeShape, handleKeyPress }) {
+  const textAreaRef = useRef();
+
+  // console.log(id, text);
+
+  function handleClick() {
+    textAreaRef.current.focus();
+  }
+
   return (
-    <div className="chart-unit">
+    <div className="chart-unit" onClick={handleClick}>
       <img
         src="compTerminal.svg"
         alt="background shape"
-        className="background-shape"
+        className="background-shape terminal"
       />
 
       <div className="txt-cont">
-        <p>
-          Aute commodo dolor cupidatat tempor in consectetur consectetur qui eu
-          in officia ex ea officia. Ullamco cillum elit sunt duis consequat
-          mollit velit. Occaecat anim ea eu mollit laboris ad ad qui.Amet
-          laborum non anim nostrud laborum reprehenderit officia dolor
-          adipisicing nulla fugiat mollit ut sint.
-        </p>
+        <textarea
+          ref={textAreaRef}
+          onChange={() => handleKeyPress}
+          value={text}
+        ></textarea>
         {/* <img src="top&bottom.svg" alt="text area" className="txt-shape" /> */}
 
         {/* <svg

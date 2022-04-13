@@ -1,8 +1,25 @@
 .nav-bar {
+  display: flex;
+  position: relative;
+  gap: 0.5em;
+  /* justify-content: flex-start; */
+  align-items: flex-start;
   color: white;
   background-color: #2a2a2a;
   width: 100%;
   /* height: 200px; */
   border-bottom: 1px solid white;
   /* border-bottom-width: 2px; */
+}
+
+.nav-bar-item {
+  cursor: pointer;
+}
+
+#logo-btn {
+  /* justify-self: flex-end; */
+  color: orange;
+  position: absolute;
+  right: 0.5em;
+  align-self: flex-end;
 }
