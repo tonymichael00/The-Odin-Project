@@ -1,9 +1,16 @@
 import React, { useRef } from 'react';
 
-function Terminal({ id, text, changeShape, handleKeyPress }) {
+function Terminal({ handleKeyPress, text, id }) {
   const textAreaRef = useRef();
 
-  // console.log(id, text);
+  // function handleKeyPress(value, id) {
+  //   let tempShapesGrid = shapesGrid;
+  //   tempShapesGrid[id].text = value;
+  //   setShapesGrid(tempShapesGrid[id]);
+  //   console.log(value);
+  // }
+
+  console.log(id, text);
 
   function handleClick() {
     textAreaRef.current.focus();
@@ -20,8 +27,8 @@ function Terminal({ id, text, changeShape, handleKeyPress }) {
       <div className="txt-cont">
         <textarea
           ref={textAreaRef}
-          onChange={() => handleKeyPress}
           value={text}
+          onChange={(e) => handleKeyPress(e.target.value, id)}
         ></textarea>
         {/* <img src="top&bottom.svg" alt="text area" className="txt-shape" /> */}
 

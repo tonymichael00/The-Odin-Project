@@ -61,6 +61,11 @@ body {
   border-width: 0px;
   resize: none;
 }
+
+.txt-cont textarea:focus {
+  /* margin: 0.2em; */
+  outline: none;
+}
 /* 
 .txt-shape {
   position: absolute;

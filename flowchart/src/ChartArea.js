@@ -1,31 +1,42 @@
+//TODO: id cant begin with a zero and be a number.
+
 import React, { createElement, useState } from 'react';
 import Terminal from './shapes/Terminal';
 
 function ChartArea() {
-  function handleKeyPress() {
-    // let tempShapesGrid = shapesGrid;
-    // tempShapesGrid[e.target.id].text = e.target.value;
-    // setShapesGrid(tempShapesGrid[e.target.id]);
-    // console.log(e.target.value);
-  }
-
   const [shapesGrid, setShapesGrid] = useState([
     {
       shape: Terminal,
       id: '00',
       text: 'write something',
-      handleKeyPress: handleKeyPress(),
+    },
+    {
+      shape: Terminal,
+      id: '01',
+      text: 'write something else',
     },
   ]);
-  //   console.table(shapesGrid);
+
+  function handleKeyPress(value, id) {
+    const tempShapesGrid = shapesGrid;
+    tempShapesGrid[Number(id)].text = value;
+    setShapesGrid(tempShapesGrid);
+    console.log(tempShapesGrid[Number(id)]);
+    console.table(shapesGrid);
+    // setShapesGrid(...values);
+    // console.log(key, id);
+  }
 
   return (
     <div id="chart-area">
-      {React.createElement(shapesGrid[0].shape, {
-        id: shapesGrid[0].id,
-        text: shapesGrid[0].text,
-      })}
-      {/* {console.log(Terminal)} */}
+      {shapesGrid.map((cell) =>
+        React.createElement(cell.shape, {
+          handleKeyPress,
+          id: cell.id,
+          key: cell.id,
+          text: cell.text,
+        })
+      )}
     </div>
   );
 }
