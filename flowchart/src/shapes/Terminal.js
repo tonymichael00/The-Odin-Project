@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-function Terminal({ handleKeyPress, text, id }) {
+function Terminal({ handleKeyPress, text }) {
   const textAreaRef = useRef();
 
   // function handleKeyPress(value, id) {
@@ -10,7 +10,7 @@ function Terminal({ handleKeyPress, text, id }) {
   //   console.log(value);
   // }
 
-  console.log(id, text);
+  console.log('id text ' + text);
 
   function handleClick() {
     textAreaRef.current.focus();
@@ -28,7 +28,7 @@ function Terminal({ handleKeyPress, text, id }) {
         <textarea
           ref={textAreaRef}
           value={text}
-          onChange={(e) => handleKeyPress(e.target.value, id)}
+          onChange={(e) => handleKeyPress(e.target.value)}
         ></textarea>
         {/* <img src="top&bottom.svg" alt="text area" className="txt-shape" /> */}
 
