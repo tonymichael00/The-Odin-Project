@@ -1,0 +1,29 @@
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.nav {
+  display: grid;
+  grid-template-columns: 100%;
+  width: 18em;
+  align-items: center;
+}
+
+.nav-header {
+  width: 18em;
+  background-color: black;
+  padding: 0.3em;
+}
+
+.nav-header a {
+  color: #ffd401;
+}
+
+.nav-form {
+  display: grid;
+  grid-template-columns: max-content 10em;
+  justify-self: center;
+  gap: 0.3em;
+  padding: 0.3em;
+}
