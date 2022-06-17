@@ -7,9 +7,11 @@ import Calendar from './Components/Calendar';
 function App() {
   return (
     <div className="App">
-      <h1>Sanguine</h1>
-      <Navigation />
-      <Calendar />
+      <h1 id="logo">Sanguine</h1>
+      <div id="content">
+        <Navigation />
+        <Calendar />
+      </div>
     </div>
   );
 }

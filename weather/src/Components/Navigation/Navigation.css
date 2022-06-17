@@ -3,6 +3,22 @@ a {
   text-decoration: none;
 }
 
+button {
+  background: rgb(255, 255, 255);
+  border: 0.1em solid black;
+  border-radius: 0;
+}
+
+button:active {
+  background-color: #ffd401;
+}
+
+input {
+  background: rgb(255, 255, 255);
+  border: 0.1em solid rgb(0, 0, 0);
+  border-radius: 0;
+}
+
 .nav {
   display: grid;
   grid-template-columns: 100%;
@@ -11,7 +27,6 @@ a {
 }
 
 .nav-header {
-  width: 18em;
   background-color: black;
   padding: 0.3em;
 }
@@ -26,4 +41,10 @@ a {
   justify-self: center;
   gap: 0.3em;
   padding: 0.3em;
+}
+
+.submit-btn {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  justify-self: right;
 }

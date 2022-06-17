@@ -1,7 +1,14 @@
 import React from 'react';
+import Days from './Components/Days';
+import Month from './Components/Month';
 
 const Calendar = () => {
-  return <div>Calendar</div>;
+  return (
+    <div>
+      <Month />
+      <Days />
+    </div>
+  );
 };
 
 export default Calendar;
