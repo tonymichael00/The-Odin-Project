@@ -12,11 +12,11 @@ const Navigation = () => {
         <a href="_blank">Weather</a>
       </div>
       <form className="nav-form">
-        <label for="zipCode">Zip Code: </label>
+        <label form="zipCode">Zip Code: </label>
         <input type="text" required />
-        <label for="temp">Temp (F): </label>
+        <label form="temp">Temp (F): </label>
         <input type="text" required />
-        <label for="temp">Temp Range: </label>
+        <label form="temp">Temp Range: </label>
         <input type="text" />
         <button type="submit" className="submit-btn" onClick={onSubmit}>
           Search

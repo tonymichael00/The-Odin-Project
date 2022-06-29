@@ -2,11 +2,15 @@ import './App.css';
 import Navigation from './Components/Navigation';
 import Calendar from './Components/Calendar';
 import fetchWeather from './Services/fetchWeather';
-//TODO
-//create a temp range and base colors off that
+import { useEffect } from 'react';
+//TODO:
+//follow youtube anthony sistilli api
 
 function App() {
-  console.log(fetchWeather('90210'));
+  useEffect(() => {
+    console.log(fetchWeather('90210'));
+    return null;
+  }, []);
 
   return (
     <div className="App">
