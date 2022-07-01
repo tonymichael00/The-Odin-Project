@@ -1,16 +1,16 @@
 import './App.css';
 import Navigation from './Components/Navigation';
 import Calendar from './Components/Calendar';
-import fetchWeather from './Services/fetchWeather';
-import { useEffect } from 'react';
+import FetchWeather from './Services/FetchWeather';
+import { useEffect, useState } from 'react';
 //TODO:
 //follow youtube anthony sistilli api
 
 function App() {
-  useEffect(() => {
-    console.log(fetchWeather('90210'));
-    return null;
-  }, []);
+  const [zipCode, setZipCode] = useState('');
+  const [fiveDayTemp, setFiveDayTemp] = useState([]);
+
+  FetchWeather('90210');
 
   return (
     <div className="App">
