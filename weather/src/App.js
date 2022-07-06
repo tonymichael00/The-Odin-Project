@@ -3,14 +3,28 @@ import Navigation from './Components/Navigation';
 import Calendar from './Components/Calendar';
 import FetchWeather from './Services/FetchWeather';
 import { useEffect, useState } from 'react';
+import FetchLocation from './Services/FetchLocation/FetchLocation';
+import FetchDays from './Services/FetchDays';
 //TODO:
-//follow youtube anthony sistilli api
+//program form to get weather data
 
 function App() {
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState('90210');
+  const [latLon, setLatLon] = useState({});
   const [fiveDayTemp, setFiveDayTemp] = useState([]);
 
-  FetchWeather('90210');
+  console.log('zipCode', zipCode);
+
+  useEffect(() => {
+    FetchLocation(zipCode);
+    console.log('this works location');
+  }, []);
+
+  useEffect(() => {
+    FetchDays(latLon);
+
+    console.log('this works days');
+  }, []);
 
   return (
     <div className="App">
