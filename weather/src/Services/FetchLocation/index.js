@@ -1,3 +1,3 @@
-import FetchLocation from './FetchLocation';
+import fetchLocation from './fetchLocation';
 
-export default FetchLocation;
+export default fetchLocation;

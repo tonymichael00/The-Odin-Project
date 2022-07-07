@@ -1,7 +1,6 @@
 import axios from 'axios';
-import { useEffect } from 'react';
 
-const FetchLocation = (zipCode) => {
+const fetchLocation = (zipCode) => {
   //fetching latitude, longitude coordinates from openweather api
 
   console.log('fetch ran');
@@ -19,4 +18,4 @@ const FetchLocation = (zipCode) => {
   return geocodeData;
 };
 
-export default FetchLocation;
+export default fetchLocation;
