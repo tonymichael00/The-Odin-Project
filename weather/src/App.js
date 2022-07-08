@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 // import FetchDays from './Services/FetchDays';
 import axios from 'axios';
 import useFetchLocation from './Hooks/useFetchLocation';
+import useFetchWeather from './Hooks/useFetchWeather';
 //TODO:
 //program form to get weather data
 
@@ -19,8 +20,8 @@ function App() {
   console.log('zipCode', zipCode);
   console.log('fiveDayTemp', fiveDayTemp);
 
-  useFetchLocation(zipCode);
-
+  const weather = useFetchWeather(zipCode);
+  console.log('weather', weather);
   // useEffect(() => {
 
   //   const GEOCODE_URL = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${API_KEY}`;

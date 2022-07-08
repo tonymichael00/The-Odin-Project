@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import ApiKey from '../ApiKey';
 
 const useFetchLocation = (zipCode) => {
   //fetching latitude, longitude coordinates from openweather api
-  const API_KEY = '8ad5a910497f1f0817efb4a78ca60e09';
+  // const API_KEY = '8ad5a910497f1f0817efb4a78ca60e09';
+  const API_KEY = ApiKey();
+  console.log('ApiKey', ApiKey);
+  console.log('API_KEY', API_KEY);
   const GEOCODE_URL = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${API_KEY}`;
 
   const [location, setLocation] = useState({});
@@ -26,9 +30,10 @@ const useFetchLocation = (zipCode) => {
     };
 
     fetchData();
-  }, [zipCode]);
+  }, []);
 
   console.log('fetchLocation ran');
+  console.log('location', location);
 
   // const geocodeData = axios.get(GEOCODE_URL).then((res) => {
   //   const geocodeData = res.data;
