@@ -1,32 +1,33 @@
 import React, { useState } from 'react';
-import useFetchWeather from '../../Hooks/useFetchWeather';
 import './Navigation.css';
 
-const Navigation = ({ setZipCode }) => {
-  const [zipCodeForm, setZipCodeForm] = useState('');
+const Navigation = ({ fetchWeather }) => {
+  const [zipCode, setZipCode] = useState('');
   const [tempForm, setTempForm] = useState('');
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    // useFetchWeather();
+    fetchWeather(zipCode);
   };
+
   return (
     <div className="nav">
       <div className="nav-header">
         <a href="_blank">Weather</a>
       </div>
-      <form className="nav-form" onSubmit={handleSubmit}>
+      <form className="nav-form" onSubmit={onSubmit}>
         <label form="zipCode">Zip Code: </label>
         <input
           type="text"
           required
-          value={zipCodeForm}
-          onChange={(e) => setZipCodeForm(e.target.value)}
+          value={zipCode}
+          onChange={(e) => setZipCode(e.target.value)}
         />
         <label form="temp">Temp (F): </label>
         <input
           type="text"
-          required
+          // required
+          // ^^ uncomment later
           value={tempForm}
           onChange={(e) => setTempForm(e.target.value)}
         />
