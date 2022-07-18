@@ -12,32 +12,14 @@ import useFetchWeather from './Hooks/useFetchWeather';
 //program form to get weather data
 
 function App() {
-  const API_KEY = '8ad5a910497f1f0817efb4a78ca60e09';
+  // const [zipCode, setZipCode] = useState('90210');
+  // const [fiveDayTemp, setFiveDayTemp] = useState([]);
 
-  const [zipCode, setZipCode] = useState('90210');
-  const [fiveDayTemp, setFiveDayTemp] = useState([]);
+  // console.log('zipCode', zipCode);
+  // console.log('fiveDayTemp', fiveDayTemp);
 
-  console.log('zipCode', zipCode);
-  console.log('fiveDayTemp', fiveDayTemp);
-
-  const weather = useFetchWeather(zipCode);
-  console.log('weather', weather);
-  // useEffect(() => {
-
-  //   const GEOCODE_URL = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${API_KEY}`;
-
-  //   axios.get(GEOCODE_URL).then((res) => {
-  //     const geocodeData = res.data;
-  //     setLocation(geocodeData);
-  //   });
-  //   console.log('this works location');
-  // }, []);
-
-  // useEffect(() => {
-  //   FetchDays(location);
-
-  //   console.log('this works days');
-  // }, []);
+  // const weather = useFetchWeather(zipCode);
+  // console.log('weather', weather);
 
   return (
     <div className="App">
