@@ -1,4 +1,4 @@
 #content {
   display: grid;
-  grid-template-columns: 18em 100%;
+  grid-template-columns: 18em min-content;
 }

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Navigation.css';
 
-const Navigation = ({ fetchWeather }) => {
+const Navigation = ({ searchZip }) => {
   const [zipCode, setZipCode] = useState('');
   const [tempForm, setTempForm] = useState('');
 
   const onSubmit = (e) => {
     e.preventDefault();
-    fetchWeather(zipCode);
+    searchZip(zipCode);
   };
 
   return (
