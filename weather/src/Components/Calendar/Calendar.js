@@ -2,7 +2,7 @@ import React from 'react';
 import Days from './Components/Days';
 import './Calendar.css';
 
-const Calendar = ({ error, weatherData, prefTemperature }) => {
+const Calendar = ({ error, weatherData, prefTemperature, rangeTemp }) => {
   // console.log('date', date);
   // console.log('temperature', temperature);
 
@@ -11,6 +11,7 @@ const Calendar = ({ error, weatherData, prefTemperature }) => {
       temperature={day.temperature}
       date={day.date}
       prefTemperature={prefTemperature}
+      rangeTemp={rangeTemp}
       key={day.date}
     />
   ));

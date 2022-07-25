@@ -1,10 +1,12 @@
 import React from 'react';
 import './Days.css';
 
-const Days = ({ temperature, date, prefTemperature }) => {
+const Days = ({ temperature, date, prefTemperature, rangeTemp }) => {
   // console.log(key);
   //limits temperature range to 15 above and below preferred temperature
-  const temperatureCap = 15;
+  const temperatureCap = rangeTemp / 2;
+  console.log('temperatureCap', temperatureCap);
+
   //calcs percentage difference
   let tempPercentage = temperature - prefTemperature;
   // console.log('tempPercentage', tempPercentage);
