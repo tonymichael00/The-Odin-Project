@@ -1,10 +1,11 @@
 import React from 'react';
 import './Days.css';
 
-const Days = ({ temperature, date, prefTemperature }) => {
+const Days = ({ temperature, date, prefTemperature, error }) => {
   // console.log(key);
+  let message;
   //limits temperature range to 15 above and below preferred temperature
-  const temperatureCap = 15;
+  const temperatureCap = 10;
   //calcs percentage difference
   let tempPercentage = temperature - prefTemperature;
   // console.log('tempPercentage', tempPercentage);
@@ -44,16 +45,32 @@ const Days = ({ temperature, date, prefTemperature }) => {
 
   // console.log('hsl', rColor, gColor, bColor);
   // console.log(`backgroundColor: rgb(${rColor},${gColor},${bColor})`);
+  //sunglasses emoji: &#x1F60E;
+  if (error) {
+    message = <div className="temperature">Error</div>;
+  } else {
+    message = (
+      <React.Fragment>
+        <div className="date">{date}</div>
+        <div className="temperature">
+          {temperature === undefined ? (
+            <p style={{ fontSize: '2em' }}>&#x1F60E;</p>
+          ) : (
+            temperature + '°'
+          )}
+        </div>
+      </React.Fragment>
+    );
+  }
 
   return (
     <div
       className="day"
       style={{ backgroundColor: `hsl(${rColor},${gColor}%,${bColor}%)` }}
     >
-      <div className="date">{date}</div>
-      <div className="temperature">{temperature + '°'}</div>
-
-      {/* temp: {temperature} date: {date} */}
+      {message}
+      {/* <div className="date">{date}</div>
+      <div className="temperature">{temperature + '°'}</div> */}
     </div>
   );
 };

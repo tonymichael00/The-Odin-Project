@@ -12,6 +12,17 @@
 #logo {
   display: flex;
   justify-content: center;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+#instructions {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+#instructions p {
+  text-align: center;
 }
 
 /* #content {

@@ -17,17 +17,17 @@ const useFetchWeather = () => {
         const res = await axios.get(GEOCODE_URL);
         console.log('LOCATION REQUESTED');
         console.log('location', res.data);
-        setError(true);
+        setError(false);
         return res.data;
       } catch (err) {
         if (err.res) {
           console.log(err.res.data);
           console.log(err.res.status);
           console.log(err.res.headers);
-          setError(false);
+          setError(true);
         } else {
           console.log(`Error: ${err.message}`);
-          setError(false);
+          setError(true);
         }
       }
     };
@@ -51,7 +51,7 @@ const useFetchWeather = () => {
         const filteredForecast = forecast.map((day) => {
           let formatTemp = Math.round(day.main.temp);
           let formatDate = day.dt_txt.slice(9, 10);
-          console.log('formatDate', formatDate);
+          // console.log('formatDate', formatDate);
           return { temperature: formatTemp, date: formatDate };
           // return { temperature: day.main.temp, date: day.dt_txt };
         });
@@ -59,16 +59,16 @@ const useFetchWeather = () => {
         console.log('forecast', forecast);
         setWeatherData(filteredForecast);
         console.log('filteredForecast', filteredForecast);
-        setError(true);
+        setError(false);
       } catch (err) {
         if (err.res) {
           console.log(err.res.data);
           console.log(err.res.status);
           console.log(err.res.headers);
-          setError(false);
+          setError(true);
         } else {
           console.log(`Error: ${err.message}`);
-          setError(false);
+          setError(true);
         }
       }
     };
