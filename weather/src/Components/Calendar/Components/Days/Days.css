@@ -1,4 +1,31 @@
 .day {
-  border: 0.1em solid rgb(0, 0, 0);
-  width: 100%;
+  border-right: 0.15rem solid rgb(0, 0, 0);
+  border-bottom: 0.15rem solid rgb(0, 0, 0);
+  /* flex: 1 1 minmax(7rem, 20rem); */
+  /* background-color: white; */
+  width: 7em;
+  height: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+@media (max-width: 41rem) {
+  .day:nth-child(n + 1):nth-child(-n + 2) {
+    border-top: 0.15rem solid rgb(0, 0, 0);
+  }
+
+  .day:nth-child(odd) {
+    border-left: 0.15rem solid rgb(0, 0, 0);
+  }
+}
+
+.date {
+  position: relative;
+  align-self: flex-start;
+  right: 2rem;
+  top: 0.5rem;
+}
+
+/* .temperature {
+} */

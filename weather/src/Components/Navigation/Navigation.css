@@ -23,11 +23,17 @@ label {
   justify-self: right;
 }
 
+#nav-container {
+  justify-self: center;
+}
+
 .nav {
   display: grid;
   grid-template-columns: 100%;
   width: 18em;
+  height: fit-content;
   align-items: center;
+  justify-self: center;
 }
 
 .nav-header {
@@ -51,4 +57,10 @@ label {
   grid-column-start: 1;
   grid-column-end: 3;
   justify-self: right;
+}
+
+@media (max-width: 41rem) {
+  #nav-container {
+    align-self: center;
+  }
 }

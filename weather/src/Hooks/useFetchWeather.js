@@ -4,7 +4,7 @@ import ApiKey from '../ApiKey';
 
 const useFetchWeather = () => {
   //fetching latitude, longitude coordinates from openweather api
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState([{}, {}, {}, {}, {}]);
   const [error, setError] = useState(false);
 
   const searchZip = (zipCode) => {
@@ -49,7 +49,11 @@ const useFetchWeather = () => {
         });
 
         const filteredForecast = forecast.map((day) => {
-          return { temperature: day.main.temp, date: day.dt_txt };
+          let formatTemp = Math.round(day.main.temp);
+          let formatDate = day.dt_txt.slice(9, 10);
+          console.log('formatDate', formatDate);
+          return { temperature: formatTemp, date: formatDate };
+          // return { temperature: day.main.temp, date: day.dt_txt };
         });
 
         console.log('forecast', forecast);
