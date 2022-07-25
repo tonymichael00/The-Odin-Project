@@ -23,11 +23,11 @@ label {
   justify-self: right;
 }
 
-#nav-container {
-  justify-self: center;
+#weather-form-container {
+  align-self: flex-start;
 }
 
-.nav {
+.weather-form {
   display: grid;
   grid-template-columns: 100%;
   width: 18em;
@@ -36,16 +36,16 @@ label {
   justify-self: center;
 }
 
-.nav-header {
+.weather-form-header {
   background-color: black;
-  padding: 0.3em;
+  padding: 0.5rem;
 }
 
-.nav-header a {
+.weather-form-header a {
   color: #ffd401;
 }
 
-.nav-form {
+.weather-form-form {
   display: grid;
   grid-template-columns: max-content 10em;
   justify-self: center;
@@ -60,7 +60,7 @@ label {
 }
 
 @media (max-width: 41rem) {
-  #nav-container {
+  #weather-form-container {
     align-self: center;
   }
 }

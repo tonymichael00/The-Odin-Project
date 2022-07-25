@@ -1,5 +1,5 @@
 import './App.css';
-import Navigation from './Components/Navigation';
+import Form from './Components/Form';
 import Calendar from './Components/Calendar';
 import useFetchWeather from './Hooks/useFetchWeather';
 import { useState } from 'react';
@@ -22,10 +22,7 @@ function App() {
     <div className="App">
       <h1 id="logo">Sanguine</h1>
       <div id="content">
-        <Navigation
-          searchZip={searchZip}
-          setPrefTemperature={setPrefTemperature}
-        />
+        <Form searchZip={searchZip} setPrefTemperature={setPrefTemperature} />
         {/* {weatherData !== [] && (
           )} */}
         <Calendar

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Navigation.css';
+import './Form.css';
 
-const Navigation = ({ searchZip, setPrefTemperature }) => {
+const Form = ({ searchZip, setPrefTemperature }) => {
   const [zipCode, setZipCode] = useState('');
   const [tempForm, setTempForm] = useState('');
 
@@ -13,12 +13,12 @@ const Navigation = ({ searchZip, setPrefTemperature }) => {
   };
 
   return (
-    <div id="nav-container">
-      <div className="nav">
-        <div className="nav-header">
+    <div id="weather-form-container">
+      <div className="weather-form">
+        <div className="weather-form-header">
           <a href="_blank">Weather</a>
         </div>
-        <form className="nav-form" onSubmit={onSubmit}>
+        <form className="weather-form-form" onSubmit={onSubmit}>
           <label form="zipCode">Zip Code: </label>
           <input
             type="text"
@@ -42,4 +42,4 @@ const Navigation = ({ searchZip, setPrefTemperature }) => {
   );
 };
 
-export default Navigation;
+export default Form;
