@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import './Navigation.css';
 
-const Navigation = ({ searchZip, setPrefTemperature }) => {
+const Navigation = ({ searchZip, setPrefTemperature, setRangeTemp }) => {
   const [zipCode, setZipCode] = useState('');
   const [tempForm, setTempForm] = useState('');
+  const [rangeForm, setRangeForm] = useState('15');
 
   const onSubmit = (e) => {
     e.preventDefault();
     searchZip(zipCode);
     setPrefTemperature(tempForm);
     console.log('tempForm', tempForm);
+    setRangeTemp(rangeForm);
   };
 
   return (
@@ -33,7 +35,14 @@ const Navigation = ({ searchZip, setPrefTemperature }) => {
             value={tempForm}
             onChange={(e) => setTempForm(e.target.value)}
           />
-          <label form="temp">Temp Range: </label>
+          <label
+            form="temp"
+            required
+            value={rangeForm}
+            onChange={(e) => setRangeForm(e.target.value)}
+          >
+            Temp Range:{' '}
+          </label>
           <input type="text" />
           <button type="submit" className="submit-btn">
             Search

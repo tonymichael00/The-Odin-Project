@@ -13,6 +13,7 @@ import { useState } from 'react';
 function App() {
   const { error, weatherData, searchZip } = useFetchWeather();
   const [prefTemperature, setPrefTemperature] = useState(0);
+  const [rangeTemp, setRangeTemp] = useState(15);
 
   // console.log('weather', weather);
   if (error) console.log('SEARCH FAILED');
@@ -25,6 +26,7 @@ function App() {
         <Navigation
           searchZip={searchZip}
           setPrefTemperature={setPrefTemperature}
+          setRangeTemp={setRangeTemp}
         />
         {/* {weatherData !== [] && (
           )} */}
@@ -32,6 +34,7 @@ function App() {
           error={error}
           weatherData={weatherData}
           prefTemperature={prefTemperature}
+          rangeTemp={rangeTemp}
         />
       </div>
     </div>
