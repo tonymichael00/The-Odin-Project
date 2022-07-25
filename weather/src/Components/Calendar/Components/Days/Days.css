@@ -1,13 +1,11 @@
 .day {
   border-right: 0.15rem solid rgb(0, 0, 0);
   border-bottom: 0.15rem solid rgb(0, 0, 0);
-  /* flex: 1 1 minmax(7rem, 20rem); */
-  /* background-color: white; */
   width: 7em;
   height: 7em;
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
 }
 
 @media (max-width: 41rem) {
@@ -23,9 +21,20 @@
 .date {
   position: relative;
   align-self: flex-start;
-  right: 2rem;
+  right: 0.5rem;
   top: 0.5rem;
 }
 
-/* .temperature {
-} */
+.temperature {
+  position: relative;
+  right: 0.5rem;
+  top: 2.5rem;
+  font-size: 2em;
+}
+
+.emoji {
+  position: relative;
+  right: -0.5rem;
+  top: -0.5rem;
+  font-size: 1.5em;
+}

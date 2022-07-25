@@ -5,7 +5,7 @@ const Days = ({ temperature, date, prefTemperature, error }) => {
   // console.log(key);
   let message;
   //limits temperature range to 15 above and below preferred temperature
-  const temperatureCap = 10;
+  const temperatureCap = 15;
   //calcs percentage difference
   let tempPercentage = temperature - prefTemperature;
   // console.log('tempPercentage', tempPercentage);
@@ -54,7 +54,7 @@ const Days = ({ temperature, date, prefTemperature, error }) => {
         <div className="date">{date}</div>
         <div className="temperature">
           {temperature === undefined ? (
-            <p style={{ fontSize: '2em' }}>&#x1F60E;</p>
+            <div className="emoji">&#x1F60E;</div>
           ) : (
             temperature + '°'
           )}

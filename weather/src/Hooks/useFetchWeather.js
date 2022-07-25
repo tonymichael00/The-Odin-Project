@@ -50,7 +50,8 @@ const useFetchWeather = () => {
 
         const filteredForecast = forecast.map((day) => {
           let formatTemp = Math.round(day.main.temp);
-          let formatDate = day.dt_txt.slice(9, 10);
+          let formatDate = day.dt_txt.slice(8, 10);
+          // if(formatDate[0] == 0)
           // console.log('formatDate', formatDate);
           return { temperature: formatTemp, date: formatDate };
           // return { temperature: day.main.temp, date: day.dt_txt };
