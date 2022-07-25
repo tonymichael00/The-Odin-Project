@@ -11,7 +11,6 @@ const Calendar = ({ error, weatherData, prefTemperature, rangeTemp }) => {
       temperature={day.temperature}
       date={day.date}
       prefTemperature={prefTemperature}
-      rangeTemp={rangeTemp}
       key={day.date}
     />
   ));
