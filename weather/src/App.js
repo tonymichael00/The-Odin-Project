@@ -8,7 +8,7 @@ import { useState } from 'react';
 // import FetchDays from './Services/FetchDays';
 
 //TODO:
-//rename Navigation component to WeatherForm
+//make weather in Form unclickable
 
 function App() {
   const { error, weatherData, searchZip } = useFetchWeather();
@@ -22,11 +22,13 @@ function App() {
     <div className="App">
       <h1 id="logo">Sanguine</h1>
       <div id="instructions">
-        <p>
-          Feel free to search for your optimum weather for the next 5 days.
-          Ideal days will be yellow and turn white the less ideal they become.
-          Just input your zip code and ideal temperature.
-        </p>
+        <div id="instructions-cont">
+          <p>
+            Feel free to search for your optimum weather for the next 5 days.
+            Ideal days will be yellow and turn white the less ideal they become.
+            Just input your zip code and ideal temperature.
+          </p>
+        </div>
       </div>
 
       <div id="content">

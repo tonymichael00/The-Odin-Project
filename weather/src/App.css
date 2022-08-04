@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -13,12 +17,25 @@
 }
 
 #instructions {
-  padding-left: 2rem;
-  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  /* padding-left: 2rem;
+  padding-right: 2rem; */
+  /* text-align: center; */
+  /* align-content: center; */
+  /* justify-self: center; */
+  /* width: minmax(25ch, 50ch); */
 }
 
-#instructions p {
-  text-align: center;
+#instructions-cont {
+  /* text-align: center; */
+  max-width: 50ch;
+  margin: 1em;
+  background-color: hsl(50, 100%, 80%);
+  padding: 1.2em;
+  height: fit-content;
 }
 
 #content {
@@ -28,6 +45,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 @media (max-width: 41rem) {
@@ -35,5 +53,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* padding: 1em; */
   }
 }

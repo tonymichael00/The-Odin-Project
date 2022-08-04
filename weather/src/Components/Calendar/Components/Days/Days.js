@@ -4,7 +4,7 @@ import './Days.css';
 const Days = ({ temperature, date, prefTemperature, error }) => {
   // console.log(key);
   let message;
-  //limits temperature range to 15 above and below preferred temperature
+  //limits temperature range to temperatureCap above and below preferred temperature
   const temperatureCap = 15;
   //calcs percentage difference
   let tempPercentage = temperature - prefTemperature;
