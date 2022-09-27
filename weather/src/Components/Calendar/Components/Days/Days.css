@@ -1,11 +1,10 @@
 .day {
   border-right: 0.15rem solid rgb(0, 0, 0);
   border-bottom: 0.15rem solid rgb(0, 0, 0);
-  width: 7em;
-  height: 7em;
+  width: 7rem;
+  height: 7rem;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 }
 
 @media (max-width: 41rem) {
@@ -29,7 +28,7 @@
   position: relative;
   right: 0.5rem;
   top: 2.5rem;
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 .emoji {

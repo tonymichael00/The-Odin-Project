@@ -3,18 +3,16 @@ import Form from './Components/Form';
 import Calendar from './Components/Calendar';
 import useFetchWeather from './Hooks/useFetchWeather';
 import { useState } from 'react';
-// import FetchWeather from './Services/FetchWeather';
-// import fetchLocation from './Services/FetchLocation/fetchLocation';
-// import FetchDays from './Services/FetchDays';
 
 //TODO:
-//make weather in Form unclickable
 
 function App() {
+  //fetches weather api. Returns request error, api, zipcode
   const { error, weatherData, searchZip } = useFetchWeather();
+  //preferred temp from form
   const [prefTemperature, setPrefTemperature] = useState(0);
 
-  // console.log('weather', weather);
+  //error log
   if (error) console.log('SEARCH FAILED');
   console.log('weatherData', weatherData);
 
@@ -30,11 +28,8 @@ function App() {
           </p>
         </div>
       </div>
-
       <div id="content">
         <Form searchZip={searchZip} setPrefTemperature={setPrefTemperature} />
-        {/* {weatherData !== [] && (
-          )} */}
         <Calendar
           error={error}
           weatherData={weatherData}

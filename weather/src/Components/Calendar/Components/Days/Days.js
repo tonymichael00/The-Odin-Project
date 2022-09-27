@@ -2,35 +2,26 @@ import React from 'react';
 import './Days.css';
 
 const Days = ({ temperature, date, prefTemperature, error }) => {
-  // console.log(key);
   let message;
-  //limits temperature range to temperatureCap above and below preferred temperature
+  //limits temperature range above and below preferred temperature
   const temperatureCap = 15;
-  //calcs percentage difference
+  //calcs percentage difference between preferred and actual temp
   let tempPercentage = temperature - prefTemperature;
-  // console.log('tempPercentage', tempPercentage);
   tempPercentage = Math.abs(tempPercentage);
   if (tempPercentage > temperatureCap) tempPercentage = temperatureCap;
   tempPercentage = tempPercentage / temperatureCap;
 
-  //light yellow
-  //rgb(255,237,144) hsl(50,100,50)
-  //lightblue
-  //rgb(144,240,255) hsl(188, 100, 50)
-  //difference
-  //111, -3, -111   -138, 0, 0
-  //add percentage difference back to light blue
-  //first color(1), 3 values(1-3),
-
+  //1st color, 3 values, yellow
   const color11 = 50;
   const color12 = 100;
   const color13 = 50;
 
-  //second color, 3 values
+  //second color, 3 values, set to white
   const color21 = color11;
   const color22 = color12;
   const color23 = 100;
 
+  //sets the day color. Multiplies percentage with color difference.
   let rColor = color11 - color21;
   let gColor = color12 - color22;
   let bColor = color13 - color23;
@@ -43,9 +34,8 @@ const Days = ({ temperature, date, prefTemperature, error }) => {
   gColor = Math.round(color12 - gColor);
   bColor = Math.round(color13 - bColor);
 
-  // console.log('hsl', rColor, gColor, bColor);
-  // console.log(`backgroundColor: rgb(${rColor},${gColor},${bColor})`);
-  //sunglasses emoji: &#x1F60E;
+  //generates the days and shows a sunglasses emoji when data isn't present,
+  //'Error' when there is an error, and temp with color range
   if (error) {
     message = <div className="temperature">Error</div>;
   } else {
@@ -69,8 +59,6 @@ const Days = ({ temperature, date, prefTemperature, error }) => {
       style={{ backgroundColor: `hsl(${rColor},${gColor}%,${bColor}%)` }}
     >
       {message}
-      {/* <div className="date">{date}</div>
-      <div className="temperature">{temperature + '°'}</div> */}
     </div>
   );
 };

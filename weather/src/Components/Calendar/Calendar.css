@@ -4,7 +4,6 @@
   width: auto;
   border-top: 0.15rem solid black;
   border-left: 0.15rem solid black;
-  /* margin-left: 1rem; */
 }
 
 @media (max-width: 41rem) {

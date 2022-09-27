@@ -12,6 +12,7 @@ const useFetchWeather = () => {
     const GEOCODE_URL = `https://api.openweathermap.org/geo/1.0/zip?zip=${zipCode},US&appid=${API_KEY}`;
     console.log('API_KEY', API_KEY);
 
+    //uses zipcode to fetch latitude, longitude coordinates
     const fetchLocation = async () => {
       try {
         const res = await axios.get(GEOCODE_URL);
@@ -32,6 +33,7 @@ const useFetchWeather = () => {
       }
     };
 
+    //uses latitude, longitude to fetch weather data
     const fetchForecast = async () => {
       const { lat, lon } = await fetchLocation();
       const FORECAST_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=imperial `;
@@ -48,13 +50,12 @@ const useFetchWeather = () => {
           } else return false;
         });
 
+        //formats api data to temp and date
         const filteredForecast = forecast.map((day) => {
           let formatTemp = Math.round(day.main.temp);
           let formatDate = day.dt_txt.slice(8, 10);
-          // if(formatDate[0] == 0)
           // console.log('formatDate', formatDate);
           return { temperature: formatTemp, date: formatDate };
-          // return { temperature: day.main.temp, date: day.dt_txt };
         });
 
         console.log('forecast', forecast);

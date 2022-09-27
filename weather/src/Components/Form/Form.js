@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Form.css';
 
 const Form = ({ searchZip, setPrefTemperature }) => {
+  //zipcode and preferred temperature from the form
   const [zipCode, setZipCode] = useState('');
   const [tempForm, setTempForm] = useState('');
 
@@ -15,9 +16,7 @@ const Form = ({ searchZip, setPrefTemperature }) => {
   return (
     <div id="weather-form-container">
       <div className="weather-form">
-        <div className="weather-form-header">
-          <a href="_blank">Weather</a>
-        </div>
+        <div className="weather-form-header">Weather</div>
         <form className="weather-form-form" onSubmit={onSubmit}>
           <label form="zipCode">Zip Code: </label>
           <input
