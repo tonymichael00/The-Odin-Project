@@ -1,12 +1,14 @@
 //sets initial row and height value as well as loads pixels.
-let pixelNo = 3;
+let PIXEL_NUM = 3;
 document.onload = createPixels();
-
 sketchTbl = document.getElementById('sketchTbl');
 
+// colors the pixels
 function colorPixels(e) {
   console.log('target background' + e.target.style.backgroundColor);
-
+  //if black, it skips
+  //checks if pixel is white, if it isn't it assigns a random color.
+  //if it's already colored it darkens the rgb values 25.6 ~ 10%
   if (e.target && e.target.nodeName == 'TD') {
     switch (e.target.style.backgroundColor) {
       case 'rgb(0, 0, 0)':
@@ -34,12 +36,13 @@ function colorPixels(e) {
   }
 }
 
+//creates pixels
 function createPixels() {
-  //creates pixels
-  for (let i = 0; i < pixelNo; i++) {
+  //creates table of pixels
+  for (let i = 0; i < PIXEL_NUM; i++) {
     var tr = document.createElement('tr');
     sketchTbl.appendChild(tr);
-    for (let j = 0; j < pixelNo; j++) {
+    for (let j = 0; j < PIXEL_NUM; j++) {
       var td = document.createElement('TD');
       sketchTbl.getElementsByTagName('TR')[i].appendChild(td);
       sketchTbl.getElementsByTagName('TR')[i].getElementsByTagName('TD')[
@@ -47,7 +50,7 @@ function createPixels() {
       ].style.backgroundColor = 'rgb(255, 255, 255)';
     }
   }
-  //when mouse hovers checks if black, white or colored. If colored reduces RGB values by 10%. If white, assigns random color, if black ignores
+  //event listener for mouse hover to color pixels
   document
     .getElementById('sketchTbl')
     .addEventListener('mouseover', colorPixels);
@@ -55,18 +58,23 @@ function createPixels() {
 
 //pixels button
 document.getElementById('pixelBtn').addEventListener('click', function (event) {
-  // const promptEntry = null;
-
-  pixelNo = prompt(
+  let promptEntry = null;
+  //prompt for number of pixels
+  promptEntry = prompt(
     'Enter number of pixels in rows and columns with a max of 100.',
     ''
   );
-  //prompt to enter pixels
-  while (!(pixelNo <= 100 && pixelNo >= 1)) {
-    pixelNo = prompt(
+  //checks if answer was 1-100.
+  while (!((promptEntry <= 100 && promptEntry >= 1) || promptEntry === null)) {
+    promptEntry = prompt(
       'Important, enter number of pixels in rows and columns with a max of 100.',
       ''
     );
+  }
+
+  //Create new pixel numbers
+  if (promptEntry <= 100 && promptEntry >= 1) {
+    PIXEL_NUM = promptEntry;
   }
 
   //removes the table nodes
@@ -75,8 +83,11 @@ document.getElementById('pixelBtn').addEventListener('click', function (event) {
       parent.removeChild(parent.firstChild);
     }
   }
-  removeAllChildNodes(sketchTbl);
 
-  //creates new "pixels"/table cells
-  createPixels();
+  //if prompt is canceled it won't reset pixels
+  if (!(promptEntry === null)) {
+    removeAllChildNodes(sketchTbl);
+    //creates new "pixels"/table cells
+    createPixels();
+  }
 });
